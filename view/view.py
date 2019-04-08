@@ -4,10 +4,10 @@ import sys
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(f"{FILE_DIR}/../controller")
 
-import controller as contr
+from controller import controller
 from flask import Flask, redirect, url_for, request
 app = Flask(__name__)
-controller = contr.Controller()
+controller = controller.Controller()
 @app.route('/view',methods = ['POST'])
 def request_handler(self):
    if request.method == 'POST':
@@ -29,7 +29,6 @@ if __name__ == '__main__':
 
 # class StreamingServer(socketserver.ThreadingMixIn, server.HTTPServer):
 #     allow_reuse_address = True
-#     daemon_threads = True
 #     try:
 #         address = ('', 8000)
 #         server = StreamingServer(address, StreamingHandler)
