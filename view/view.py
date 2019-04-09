@@ -20,7 +20,7 @@ def request_handler(self):
       # return redirect(url_for('success',name = user))
 
 if __name__ == '__main__':
-   app.run(host = SERVER_IP)
+   app.run(host = SERVER_IP, debug=True)
 
 
 
