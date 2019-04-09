@@ -10,7 +10,7 @@ from flask import Flask, render_template, Response
 
 # Raspberry Pi camera module (requires picamera package)
 from camera_pi import Camera
-print(sys.argv[1])
+print(sys.argv[0])
 # client_ip = sys.argv[1]
 # port = sys.argv[2]
 
