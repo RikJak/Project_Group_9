@@ -14,14 +14,11 @@ class Validate:
         content = {'email':email,'api_key':api_key}
         content = json.dumps(content)
         headers = {"Content-Type":"application/json"}
-        print(content)
         r = requests.post('http://g9.apic.eu-gb.mybluemix.net/api/user/validate_user', data = content,headers = headers,verify=False)
-        print(r.content)
-        return r
+        #msg = r.content
 
-    def test(self):
-        """TEMPORARY TEST METHOD
-        """
-        print(self.validate_user(self.TEST_USER,self.TEST_KEY))
+        if(r.status_code == 200):
+            return True
 
-r = Validate()
+
+        return False
