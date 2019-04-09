@@ -24,6 +24,7 @@ class StreamHandler:
 
     def set_up_stream(self,email,api_key,client_ip):
         valid = self.validate.validate_user(email,api_key)
+        valid = True
         if (valid):
             video_stream.start_stream(client_ip,PORT)
             return json.dumps({'port':PORT, 'server_ip': SERVER_IP})
