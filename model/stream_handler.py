@@ -26,7 +26,7 @@ class StreamHandler:
         valid = self.validate.validate_user(email,api_key)
         if (valid):
             video_stream.start_stream(client_ip,PORT)
-            return json.dumps{'port':PORT, 'server_ip': SERVER_IP}
+            return json.dumps({'port':PORT, 'server_ip': SERVER_IP})
         return '', 403
             
 
