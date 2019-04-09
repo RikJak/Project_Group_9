@@ -3,7 +3,7 @@ import sys
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(f"{FILE_DIR}/../integration")
 from flask import Flask, render_template, Response, request, abort
-from integration.camera_pi import Camera
+from camera_pi import Camera
 
 
 from flask import Flask, render_template, Response
