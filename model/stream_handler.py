@@ -4,7 +4,7 @@ FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(f"{FILE_DIR}/../integration")
 
 from validate import Validate
-# import picamera
+import picamera
 import logging
 import socketserver
 from streaming_handler import StreamingHandler
