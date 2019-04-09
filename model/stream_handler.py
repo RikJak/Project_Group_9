@@ -18,6 +18,7 @@ from flask import Flask, render_template, Response
 from camera_pi import Camera
 
 PORT = 8001
+SERVER_IP = '130.237.215.167'
 
 app = Flask(__name__)
 @app.route('/')
@@ -30,13 +31,13 @@ def gen(camera):
         frame = camera.get_frame()
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
-# @app.route('/video_feed')
+@app.route('/video_feed')
 def video_feed():
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(gen(Camera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 if __name__ == '__main__':
-    app.run(host='130.237.215.167', port = PORT, debug=True, threaded=True)
+    app.run(host=SERVER_IP, port = PORT, debug=True, threaded=True)
 
 # class StreamingServer(socketserver.ThreadingMixIn, server.HTTPServer):
 #     allow_reuse_address = True
