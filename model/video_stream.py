@@ -8,7 +8,7 @@ sys.path.append(f"{FILE_DIR}/../integration")
 def start_stream(client_ip,port):
     PORT = port
     SERVER_IP = '130.237.215.167'
-
+    app.run(host=SERVER_IP, port = PORT, debug=True, threaded=True)
     app = Flask(__name__)
     # @app.before_request
     # def limit_remote_addr():
@@ -27,5 +27,5 @@ def start_stream(client_ip,port):
     def video_feed():
             """Video streaming route. Put this in the src attribute of an img tag."""
             return Response(gen(Camera()), mimetype='multipart/x-mixed-replace; boundary=frame')
-    if __name__ == '__main__':
-        app.run(host=SERVER_IP, port = PORT, debug=True, threaded=True)
+    # if __name__ == '__main__':
+        # app.run(host=SERVER_IP, port = PORT, debug=True, threaded=True)
