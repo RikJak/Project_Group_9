@@ -12,6 +12,9 @@ from flask import Flask, render_template, Response
 from camera_pi import Camera
 print(sys.argv)
 print(len(sys.argv))
+arguments = sys.argv
+print(argument[0])
+print(arguments[1])
 # client_ip = sys.argv[1]
 # port = sys.argv[2]
 
