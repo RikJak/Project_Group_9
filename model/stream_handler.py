@@ -16,7 +16,7 @@ import video_stream
 import json
 
 
-PORT = 8001
+PORT = 8000
 SERVER_IP = '130.237.215.167'
 class StreamHandler:
     def __init__(self):
