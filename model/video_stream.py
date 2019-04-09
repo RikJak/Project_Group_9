@@ -17,9 +17,9 @@ print(number_of_args)
 app = Flask(__name__)
 @app.before_request
 def limit_remote_addr():
-    if  True
-        client_ip = sys.argv[1]
-        port = sys.argv[2]
+    # if  number_of_args =>2:
+    #     client_ip = sys.argv[1]
+    #     port = sys.argv[2]
 
     if request.remote_addr != client_ip:
          abort(403)
