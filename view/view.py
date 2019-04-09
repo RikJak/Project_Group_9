@@ -15,8 +15,9 @@ def request_handler():
       email = request.form.get('email')
       api_key = request.form.get('api_key')
       client_ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+      return client_ip
       # client_ip = request.environ.get('REMOTE_ADDR')
-      controller.set_up_stream(email,api_key,client_ip)  
+      # controller.set_up_stream(email,api_key,client_ip)  
       # return redirect(url_for('success',name = user))
 
 if __name__ == '__main__':
