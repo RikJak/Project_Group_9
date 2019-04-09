@@ -10,7 +10,7 @@ app = Flask(__name__)
 controller = Controller()
 @app.route('/view',methods = ['POST'])
 def request_handler(self):
-   if request.method == 'POST':
+   if self.request.method == 'POST':
       user = request.form['user']
       api_key = request.form['api_key']
       client_ip = request.environ['REMOTE_ADDR']
