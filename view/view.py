@@ -18,7 +18,8 @@ def request_handler():
       # client_ip = request.environ.get('REMOTE_ADDR')
       return controller.set_up_stream(email,api_key,client_ip)  
       # return redirect(url_for('success',name = user))
-
+   else:
+      return 403
 if __name__ == '__main__':
    app.run(host = SERVER_IP, debug=True)
 
