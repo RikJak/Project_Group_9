@@ -10,9 +10,14 @@ from flask import Flask, render_template, Response
 
 # Raspberry Pi camera module (requires picamera package)
 from camera_pi import Camera
+client_ip = sys.argv[1]
+port = sys.argv[2]
 
 app = Flask(__name__)
-
+@app.before_request
+    def limit_remote_addr():
+        if request.remote_addr != client_ip:
+             abort(403)
 
 @app.route('/')
 # def index():
@@ -36,7 +41,7 @@ def video_feed():
 
 
 if __name__ == '__main__':
-    app.run(host='130.237.215.167', port =8000, debug=True, threaded=True)
+    app.run(host='130.237.215.167', port =port, debug=True, threaded=True)
 # # def start_stream(client_ip,port):
 # PORT = 8000
 # SERVER_IP = '130.237.215.167'
