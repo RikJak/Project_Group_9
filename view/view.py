@@ -4,10 +4,10 @@ import sys
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(f"{FILE_DIR}/../controller")
 
-from controller import controller
+from contr import Controller
 from flask import Flask, redirect, url_for, request
 app = Flask(__name__)
-controller = controller.Controller()
+controller = Controller()
 @app.route('/view',methods = ['POST'])
 def request_handler(self):
    if request.method == 'POST':
