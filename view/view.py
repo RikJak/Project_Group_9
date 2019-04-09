@@ -9,7 +9,7 @@ from contr import Controller
 from flask import Flask, redirect, url_for, request
 app = Flask(__name__)
 controller = Controller()
-@app.route('/view',methods = ['POST'])
+@app.route('/',methods = ['POST'])
 def request_handler(self):
    if self.request.method == 'POST':
       print("found")
