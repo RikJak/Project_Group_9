@@ -10,15 +10,15 @@ from flask import Flask, render_template, Response
 
 # Raspberry Pi camera module (requires picamera package)
 from camera_pi import Camera
-print(sys.argv)
-client_ip = sys.argv[1]
-port = sys.argv[2]
+# print(sys.argv)
+# client_ip = sys.argv[1]
+# port = sys.argv[2]
 
 app = Flask(__name__)
-@app.before_request
-def limit_remote_addr():
-    if request.remote_addr != client_ip:
-         abort(403)
+# @app.before_request
+# def limit_remote_addr():
+#     if request.remote_addr != client_ip:
+#          abort(403)
 
 @app.route('/')
 # def index():
