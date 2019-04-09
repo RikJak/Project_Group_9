@@ -26,7 +26,8 @@ class StreamHandler:
         valid = self.validate.validate_user(email,api_key)
         valid = True
         if (valid):
-            os.system('sudo python3 /home/Project_Group_9/model/video_stream.py')
+
+            os.system('sudo python3 /home/Project_Group_9/model/video_stream.py &')
             # video_stream.start_stream(client_ip,PORT)
             return json.dumps({'port':PORT, 'server_ip': SERVER_IP})
         return '', 403
