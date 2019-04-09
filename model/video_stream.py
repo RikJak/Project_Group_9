@@ -12,6 +12,7 @@ from flask import Flask, render_template, Response
 from camera_pi import Camera
 
 PORT = 8000
+number_of_args=len(sys.argv)
 
 app = Flask(__name__)
 @app.before_request
