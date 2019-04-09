@@ -14,7 +14,7 @@ def request_handler():
    if request.method == 'POST':
       print("found")
       email = request.form.get('email')
-      api_key = request.form['api_key']
+      api_key = request.form.get('api_key')
       client_ip = request.environ['REMOTE_ADDR']
       controller.set_up_stream(email,api_key,client_ip)  
       # return redirect(url_for('success',name = user))
