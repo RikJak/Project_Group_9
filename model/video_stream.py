@@ -13,7 +13,7 @@ from camera_pi import Camera
 print(sys.argv)
 print(len(sys.argv))
 arguments = str(sys.argv).split(", ")
-print(arguments[1])
+print(arguments)
 # client_ip = sys.argv[1]
 # port = sys.argv[2]
 
