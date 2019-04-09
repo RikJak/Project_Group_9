@@ -10,10 +10,10 @@ def start_stream(client_ip,port):
     SERVER_IP = '130.237.215.167'
 
     app = Flask(__name__)
-    @app.before_request
-    def limit_remote_addr():
-            if request.remote_addr != client_ip:
-                abort(403)
+    # @app.before_request
+    # def limit_remote_addr():
+    #         if request.remote_addr != client_ip:
+    #             abort(403)
     @app.route('/')
         # def index():
         #     """Video streaming home page."""
