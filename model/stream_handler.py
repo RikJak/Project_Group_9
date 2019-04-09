@@ -13,6 +13,7 @@ from streaming_output import StreamingOutput
 from threading import Condition
 from http import server
 import video_stream
+import json
 
 
 PORT = 8001
@@ -25,6 +26,8 @@ class StreamHandler:
         valid = self.validate.validate_user(email,api_key)
         if (valid):
             video_stream.start_stream(client_ip,PORT)
+            return json.dumps{'port':PORT, 'server_ip': SERVER_IP}
+        return '', 403
             
 
 # class StreamingServer(socketserver.ThreadingMixIn, server.HTTPServer):
