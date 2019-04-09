@@ -1,9 +1,9 @@
 import os
 import sys
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(f"{FILE_DIR}/../integration")
+sys.path.append(f"{FILE_DIR}/../")
 from flask import Flask, render_template, Response, request, abort
-from camera_pi import Camera
+from integration.camera_pi import Camera
 
 
 
