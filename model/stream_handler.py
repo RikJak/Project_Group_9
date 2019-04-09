@@ -27,7 +27,7 @@ class StreamHandler:
         valid = True
         if (valid):
 
-            os.system(f"sudo python3 /home/Project_Group_9/model/video_stream.py " +client_ip+ " "+ PORT+ "  &")
+            os.system("sudo python3 /home/Project_Group_9/model/video_stream.py 130.229.160.254 8001 &")
             # video_stream.start_stream(client_ip,PORT)
             return json.dumps({'port':PORT, 'server_ip': SERVER_IP})
         return '', 403
