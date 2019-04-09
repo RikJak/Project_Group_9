@@ -12,6 +12,7 @@ controller = Controller()
 @app.route('/view',methods = ['POST'])
 def request_handler(self):
    if self.request.method == 'POST':
+      print("found")
       user = request.form['user']
       api_key = request.form['api_key']
       client_ip = request.environ['REMOTE_ADDR']
