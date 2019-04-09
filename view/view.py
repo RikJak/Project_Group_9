@@ -13,7 +13,7 @@ controller = Controller()
 def request_handler(self):
    if self.request.method == 'POST':
       print("found")
-      user = request.form['user']
+      user = request.form['email']
       api_key = request.form['api_key']
       client_ip = request.environ['REMOTE_ADDR']
       self.controller.set_up_stream(user,api_key,client_ip)  
