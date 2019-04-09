@@ -13,8 +13,10 @@ class Validate:
         """
         content = {'email':email,'api_key':api_key}
         content = json.dumps(content)
-        print(contents)
-        r = requests.post('http://g9.apic.eu-gb.mybluemix.net/api/user/validate_user', data = content,verify=False)
+        headers = {"Content-Type":"application/json"}
+        print(content)
+        r = requests.post('http://g9.apic.eu-gb.mybluemix.net/api/user/validate_user', data = content,headers = headers,verify=False)
+        print(r.content)
         return r
 
     def test(self):
