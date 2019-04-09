@@ -19,7 +19,7 @@ class StreamingServer(socketserver.ThreadingMixIn, server.HTTPServer):
     
 class StreamHandler:
     def __init__(self):
-        self.validate= Validate
+        self.validate= Validate()
 
     def set_up_stream(self,email,api_key,client_ip):
         valid = self.validate.validate_user(email,api_key)
@@ -36,3 +36,4 @@ class StreamHandler:
                 server.serve_forever()
             finally:
                 camera.stop_recording()
+

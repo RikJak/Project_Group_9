@@ -1,5 +1,6 @@
 import io
 from threading import Condition
+
 class StreamingOutput(object):
     def __init__(self):
         self.frame = None
