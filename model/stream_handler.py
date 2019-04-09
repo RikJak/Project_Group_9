@@ -14,30 +14,39 @@ from threading import Condition
 from http import server
 
 
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, Response, request, abort
 from camera_pi import Camera
 
 PORT = 8001
 SERVER_IP = '130.237.215.167'
+class StreamHandler:
+    def __init__(self):
+        self.validate= Validate()
 
-app = Flask(__name__)
-@app.route('/')
-# def index():
-#     """Video streaming home page."""
-#     return render_template('index.html')
-def gen(camera):
-    """Video streaming generator function."""
-    while True:
-        frame = camera.get_frame()
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
-@app.route('/video_feed')
-def video_feed():
-    """Video streaming route. Put this in the src attribute of an img tag."""
-    return Response(gen(Camera()),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')
-if __name__ == '__main__':
-    app.run(host=SERVER_IP, port = PORT, debug=True, threaded=True)
+    def set_up_stream(self,email,api_key,client_ip):
+        valid = self.validate.validate_user(email,api_key)
+        if (valid):
+            app = Flask(__name__)
+            @app.before_request
+            def limit_remote_addr():
+                if request.remote_addr != client_ip:
+                    abort(403)
+            @app.route('/')
+            # def index():
+            #     """Video streaming home page."""
+            #     return render_template('index.html')
+            def gen(camera):
+                """Video streaming generator function."""
+                while True:
+                    frame = camera.get_frame()
+                    yield (b'--frame\r\n'
+                        b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+            @app.route('/video_feed')
+            def video_feed():
+                """Video streaming route. Put this in the src attribute of an img tag."""
+                return Response(gen(Camera()), mimetype='multipart/x-mixed-replace; boundary=frame')
+            if __name__ == '__main__':
+                app.run(host=SERVER_IP, port = PORT, debug=True, threaded=True)
 
 # class StreamingServer(socketserver.ThreadingMixIn, server.HTTPServer):
 #     allow_reuse_address = True

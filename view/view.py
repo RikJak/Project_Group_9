@@ -16,7 +16,7 @@ def request_handler(self):
       api_key = request.form['api_key']
       client_ip = request.environ['REMOTE_ADDR']
       self.controller.set_up_stream(user,api_key,client_ip)  
-      return redirect(url_for('success',name = user))
+      # return redirect(url_for('success',name = user))
 
 if __name__ == '__main__':
    app.run(host = SERVER_IP)
