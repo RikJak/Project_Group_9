@@ -4,14 +4,14 @@ FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(f"{FILE_DIR}/../integration")
 
 from validate import Validate
-import picamera
-from camera_pi import Camera
-import logging
-import socketserver
-from streaming_handler import StreamingHandler
-from streaming_output import StreamingOutput
-from threading import Condition
-from http import server
+# import picamera
+# from camera_pi import Camera
+# import logging
+# import socketserver
+# from streaming_handler import StreamingHandler
+# from streaming_output import StreamingOutput
+# from threading import Condition
+# from http import server
 import video_stream
 import json
 
@@ -24,12 +24,10 @@ class StreamHandler:
 
     def set_up_stream(self,email,api_key,client_ip):
         valid = self.validate.validate_user(email,api_key)
-        valid = True
+        valid = True # this will ba taken away when the validate server is up and working
         if (valid):
             start_command = f"sudo python3 /home/Project_Group_9/model/video_stream.py {client_ip} {PORT} &"
             os.system(start_command)
-            # os.system("sudo python3 /home/Project_Group_9/model/video_stream.py &")
-            # video_stream.start_stream(client_ip,PORT)
             return json.dumps({'port':PORT, 'server_ip': SERVER_IP})
         return '', 403
             
