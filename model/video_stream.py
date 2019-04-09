@@ -8,8 +8,8 @@ sys.path.append(f"{FILE_DIR}/../integration")
 def start_stream(client_ip,port):
     PORT = port
     SERVER_IP = '130.237.215.167'
-    app.run(host=SERVER_IP, port = PORT, debug=True, threaded=True)
     app = Flask(__name__)
+    app.run(host=SERVER_IP, port = PORT, debug=True, threaded=True)
     # @app.before_request
     # def limit_remote_addr():
     #         if request.remote_addr != client_ip:
