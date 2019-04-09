@@ -3,22 +3,23 @@ import sys
 
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(f"{FILE_DIR}/../controller")
-
+SERVER_IP = '130.237.215.167'
 from contr import Controller
 from flask import Flask, redirect, url_for, request
 app = Flask(__name__)
 controller = Controller()
 @app.route('/view',methods = ['POST'])
-def request_handler(self):
-   if self.request.method == 'POST':
-      user = request.form['user']
-      api_key = request.form['api_key']
-      client_ip = request.environ['REMOTE_ADDR']
-      self.controller.set_up_stream(user,api_key,client_ip)  
-      return redirect(url_for('success',name = user))
+class View:
+   def request_handler(self):
+      if self.request.method == 'POST':
+         user = request.form['user']
+         api_key = request.form['api_key']
+         client_ip = request.environ['REMOTE_ADDR']
+         self.controller.set_up_stream(user,api_key,client_ip)  
+         return redirect(url_for('success',name = user))
 
-if __name__ == '__main__':
-   app.run(host = '130.229.136.207')
+   if __name__ == '__main__':
+      app.run(host = SERVER_IP)
 
 
 
