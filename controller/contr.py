@@ -9,7 +9,7 @@ class Controller:
     def __init__(self):
         self.handler = StreamHandler
     
-    def set_up_stream(self,email,api_key,client_address):
-        self.handler.set_up_stream(email,api_key,client_address)
+    def set_up_stream(self,email,api_key,client_ip):
+        self.handler.set_up_stream(email,api_key,client_ip)
 
     

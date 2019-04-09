@@ -12,10 +12,10 @@ controller = Controller()
 @app.route('/',methods = ['POST'])
 def request_handler():
    if request.method == 'POST':
-      print("found")
       email = request.form.get('email')
       api_key = request.form.get('api_key')
-      client_ip = request.environ.get('REMOTE_ADDR')
+      clilent_ip = request.remote_addr
+      # client_ip = request.environ.get('REMOTE_ADDR')
       controller.set_up_stream(email,api_key,client_ip)  
       # return redirect(url_for('success',name = user))
 
