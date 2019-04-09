@@ -11,7 +11,7 @@ from flask import Flask, render_template, Response
 # Raspberry Pi camera module (requires picamera package)
 from camera_pi import Camera
 
-int(number_of_args)=len(sys.argv)
+number_of_args=len(sys.argv)
 print(number_of_args)
 
 app = Flask(__name__)
