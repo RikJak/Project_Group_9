@@ -37,7 +37,7 @@ def video_feed(camera=None):
     if camera is None:
         camera = Camera()
     """Video streaming route. Put this in the src attribute of an img tag."""
-    return Response(gen(camera, mimetype='multipart/x-mixed-replace; boundary=frame'))
+    return Response(gen(camera), mimetype='multipart/x-mixed-replace; boundary=frame'))
 
 @app.route('/setting')
 def request_handler():
