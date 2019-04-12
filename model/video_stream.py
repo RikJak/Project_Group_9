@@ -39,7 +39,7 @@ def video_feed(camera=None):
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(gen(camera), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-@app.route('/setting')
+@app.route('/setting', methods = ['POST'])
 def request_handler():
    if request.method == 'POST':
       res_x = request.form.get('resolution_x')
