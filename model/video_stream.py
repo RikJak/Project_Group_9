@@ -4,12 +4,7 @@ FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(f"{FILE_DIR}/../integration")
 from flask import Flask, render_template, Response, request, abort
 from camera_pi import Camera
-
-
-from flask import Flask, render_template, Response
-
 # Raspberry Pi camera module (requires picamera package)
-from camera_pi import Camera
 
 PORT = 8000
 number_of_args=len(sys.argv)
@@ -25,10 +20,8 @@ def limit_remote_addr():
          abort(403)
 
 @app.route('/')
-# def index():
-#     """Video streaming home page."""
-#     return render_template('index.html')
 
+      
 
 def gen(camera):
     """Video streaming generator function."""
@@ -39,10 +32,24 @@ def gen(camera):
 
 
 @app.route('/video_feed')
-def video_feed():
+
+def video_feed(camera=None):
+    if camera is None:
+        camera = Camera()
     """Video streaming route. Put this in the src attribute of an img tag."""
-    return Response(gen(Camera()),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')
+    return Response(gen(camera, mimetype='multipart/x-mixed-replace; boundary=frame'))
+
+@app.route('/setting')
+def request_handler():
+   if request.method == 'POST':
+      res_x = request.form.get('resolution_x')
+      res_y = request.form.get('resolution_y')
+      camera= Camera()
+      camera.resolution_x(res_x)
+      camera.resolution_y(res_y)
+      return video_feed(camera)
+
+      
 
 
 if __name__ == '__main__':
