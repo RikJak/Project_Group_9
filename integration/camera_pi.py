@@ -2,15 +2,16 @@ import time
 import io
 import threading
 import picamera
-
-
+RES_X
+RES_Y
 class Camera(object):
     thread = None  # background thread that reads frames from camera
     frame = None  # current frame is stored here by background thread
     last_access = 0  # time of last client access to the camera
+
     def __init__(self,res_x, res_y):
-        self.res_x = res_x
-        self.res_y = res_y
+        RES_X = res_x
+        RES_Y = res_y
 
 
     def initialize(self):
@@ -32,7 +33,7 @@ class Camera(object):
     def _thread(self):
         with picamera.PiCamera() as camera:
             # camera setup
-            camera.resolution = (self.res_x, self.res_y)
+            camera.resolution = (RES_X, RES_Y)
             camera.hflip = True
             camera.vflip = True
 
