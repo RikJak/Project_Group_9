@@ -12,7 +12,7 @@ class Camera(object):
     def initialize(self, res_x, res_y):
         if Camera.thread is None:
             # start background frame thread
-            Camera.thread = threading.Thread(target=self._thread, res_x, res_y)
+            Camera.thread = threading.Thread(target=self._thread( res_x, res_y))
             Camera.thread.start()
 
             # wait until frames start to be available
