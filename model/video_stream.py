@@ -35,7 +35,7 @@ def gen(camera):
 
 def video_feed(camera=None):
     if camera is None:
-        camera = Camera()
+        camera = Camera(640,480)
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(gen(camera), mimetype='multipart/x-mixed-replace; boundary=frame')
 
@@ -44,10 +44,7 @@ def request_handler():
    if request.method == 'POST':
       res_x = request.form.get('resolution_x')
       res_y = request.form.get('resolution_y')
-      camera= Camera()
-      #camera.resolution_x(res_x)
-      #camera.resolution_y(res_y)
-      camera.resolution(res_x,res_y)
+      camera= Camera(res_x,res_y)
       return video_feed(camera)
 
       
