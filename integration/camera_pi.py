@@ -2,8 +2,8 @@ import time
 import io
 import threading
 import picamera
-RES_X
-RES_Y
+RES_X=640
+RES_Y=480
 class Camera(object):
     thread = None  # background thread that reads frames from camera
     frame = None  # current frame is stored here by background thread
