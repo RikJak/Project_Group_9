@@ -45,8 +45,9 @@ def request_handler():
       res_x = request.form.get('resolution_x')
       res_y = request.form.get('resolution_y')
       camera= Camera()
-      camera.resolution_x(res_x)
-      camera.resolution_y(res_y)
+      #camera.resolution_x(res_x)
+      #camera.resolution_y(res_y)
+      camera.resolution(res_x,res_y)
       return video_feed(camera)
 
       
