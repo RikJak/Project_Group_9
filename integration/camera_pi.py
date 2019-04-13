@@ -49,6 +49,7 @@ class Camera(object):
             # camera setup
             global RES_X
             global RES_Y
+            print(RES_X)
             camera.resolution = (RES_X, RES_Y)
             camera.hflip = True
             camera.vflip = True
