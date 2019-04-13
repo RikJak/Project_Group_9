@@ -50,8 +50,8 @@ def video_feed():
 @app.route('/settings', methods = ['POST'])
 def request_handler():
    if request.method == 'POST':
-        res_x = request.form.get('resolution_x')
-        res_y = request.form.get('resolution_y')
+        res_x = request.form.get('res_x')
+        res_y = request.form.get('res_y')
         print(res_x)
         print(res_y)
         CAMERA = Camera(res_x,res_y)
