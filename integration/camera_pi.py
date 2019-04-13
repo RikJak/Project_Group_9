@@ -2,8 +2,8 @@ import time
 import io
 import threading
 import picamera
-RES_X=0
-RES_Y=0
+RES_X=640
+RES_Y=480
 CUR_RES_X = RES_X
 CUR_RES_Y = RES_Y
 class Camera(object):
