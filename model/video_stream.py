@@ -4,6 +4,7 @@ FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(f"{FILE_DIR}/../integration")
 from flask import Flask, render_template, Response, request, abort
 from camera_pi import Camera
+import json
 # Raspberry Pi camera module (requires picamera package)
 
 PORT = 8000
@@ -52,6 +53,7 @@ def request_handler():
         res_x = request.form.get('resolution_x')
         res_y = request.form.get('resolution_y')
         CAMERA.set_resolution(res_x,res_y)
+        return json.dumps({'msg':resolution changed})
 
       
 
