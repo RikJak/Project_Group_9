@@ -31,15 +31,20 @@ def gen(camera):
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 
-@app.route('/video_feed')
-
+@app.route('/video_feed', methods = ['POST', 'GET'])
+def request_handler():
+   if request.method == 'POST':
+      res_x = request.form.get('resolution_x')
+      res_y = request.form.get('resolution_y')
+      camera= Camera(res_x,res_y)
+      return video_feed(camera)
 def video_feed(camera=None):
     if camera is None:
         camera = Camera(640,480)
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(gen(camera), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-@app.route('/setting', methods = ['POST'])
+@app.route('/settings', methods = ['POST'])
 def request_handler():
    if request.method == 'POST':
       res_x = request.form.get('resolution_x')
