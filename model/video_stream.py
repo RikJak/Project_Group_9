@@ -25,10 +25,10 @@ def limit_remote_addr():
 
       
 
-def gen(camera):
+def gen(camera,res_x,res_y):
     """Video streaming generator function."""
     while True:
-        frame = camera.get_frame()
+        frame = camera.get_frame(res_x,res_y)
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
@@ -40,12 +40,13 @@ def gen(camera):
 #         res_y = request.form.get('resolution_y')
 #         camera= Camera(res_x,res_y)
 #         video_feed(camera)
-def video_feed(CAMERA=None):
-    if CAMERA is None:
-        CAMERA = Camera(480,360)
-    print(CAMERA.get_res())
+def video_feed(res_x,res_y):
+    # if CAMERA is None:
+    #     CAMERA = Camera(480,360)
+    # print(CAMERA.get_res())
+    CAMERA = Camera(res_x,res_y)
     """Video streaming route. Put this in the src attribute of an img tag."""
-    return Response(gen(CAMERA), mimetype='multipart/x-mixed-replace; boundary=frame')
+    return Response(gen(CAMERA,res_x,res_y), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/settings', methods = ['POST','GET'])
 def request_handler():
@@ -54,7 +55,7 @@ def request_handler():
         res_y = request.args.get('res_y')
         CAMERA = Camera(res_x,res_y)
         print(f"{res_x}x{res_y}")
-        return video_feed(CAMERA)
+        return video_feed(res_x,res_y)
         # return json.dumps({'msg':'ok','res':resolution})
 
       

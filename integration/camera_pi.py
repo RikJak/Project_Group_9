@@ -2,10 +2,10 @@ import time
 import io
 import threading
 import picamera
-RES_X=640
-RES_Y=480
-CUR_RES_X = RES_X
-CUR_RES_Y = RES_Y
+# RES_X=640
+# RES_Y=480
+# CUR_RES_X = RES_X
+# CUR_RES_Y = RES_Y
 class Camera(object):
     thread = None  # background thread that reads frames from camera
     frame = None  # current frame is stored here by background thread
@@ -18,33 +18,32 @@ class Camera(object):
     def set_resolution(self,res_x,res_y):
         RES_X = res_x
         RES_Y = res_y
-    def get_res(self):
-        return RES_X
+    
     def changed_resolution(self):
         if CUR_RES_X != RES_X or CUR_RES_Y != RES_Y:
             return True
         return False
 
-    def initialize(self):
+    def initialize(self,res_x,res_y):
         if Camera.thread is None:
             # start background frame thread
-            Camera.thread = threading.Thread(target=self._thread)
+            Camera.thread = threading.Thread(target=self._thread(res_x,res_y))
             Camera.thread.start()
 
             # wait until frames start to be available
             while self.frame is None:
                 time.sleep(0)
 
-    def get_frame(self):
+    def get_frame(self,res_x,res_y):
         Camera.last_access = time.time()
-        self.initialize()
+        self.initialize(res_x,res_y)
         return self.frame
 
     @classmethod
-    def _thread(self):
+    def _thread(self,res_x,res_y):
         with picamera.PiCamera() as camera:
             # camera setup
-            camera.resolution = (RES_X, RES_Y)
+            camera.resolution = (res_x, res_y)
             camera.hflip = True
             camera.vflip = True
 
