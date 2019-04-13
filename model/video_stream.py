@@ -34,12 +34,11 @@ def gen(camera):
 @app.route('/video_feed', methods = ['POST', 'GET'])
 def request_handler():
    if request.method == 'POST':
-      res_x = request.form.get('resolution_x')
-      res_y = request.form.get('resolution_y')
-      camera= Camera(res_x,res_y)
-      video_feed(camera)
-    #   return json.dumps({'msg':resolution changed})
-    self.video_feed()
+        res_x = request.form.get('resolution_x')
+        res_y = request.form.get('resolution_y')
+        camera= Camera(res_x,res_y)
+        video_feed(camera)
+
 def video_feed(camera=None):
     if camera is None:
         camera = Camera(640,480)
