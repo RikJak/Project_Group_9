@@ -44,13 +44,13 @@ def video_feed(camera=None):
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(gen(camera), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-@app.route('/settings', methods = ['POST'])
-def request_handler():
-   if request.method == 'POST':
-      res_x = request.form.get('resolution_x')
-      res_y = request.form.get('resolution_y')
-      camera= Camera(res_x,res_y)
-      return video_feed(camera)
+# @app.route('/settings', methods = ['POST'])
+# def request_handler():
+#    if request.method == 'POST':
+#       res_x = request.form.get('resolution_x')
+#       res_y = request.form.get('resolution_y')
+#       camera= Camera(res_x,res_y)
+#       return video_feed(camera)
 
       
 
