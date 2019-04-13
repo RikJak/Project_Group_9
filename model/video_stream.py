@@ -8,7 +8,7 @@ import json
 # Raspberry Pi camera module (requires picamera package)
 
 PORT = 8000
-CAMERA = Camera(640,480)
+CAMERA = Camera(480,360)
 number_of_args=len(sys.argv)
 
 app = Flask(__name__)
@@ -42,7 +42,7 @@ def gen(camera):
 #         video_feed(camera)
 def video_feed(CAMERA=None):
     if CAMERA is None:
-        CAMERA = Camera(640,480)
+        CAMERA = Camera(480,360)
     print(CAMERA.get_res())
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(gen(CAMERA), mimetype='multipart/x-mixed-replace; boundary=frame')
