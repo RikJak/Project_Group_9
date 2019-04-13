@@ -53,7 +53,7 @@ def request_handler():
         res_x = request.form.get('resolution_x')
         res_y = request.form.get('resolution_y')
         CAMERA.set_resolution(res_x,res_y)
-        return json.dumps({'msg':resolution changed})
+        return json.dumps({'msg':'ok'})
 
       
 
