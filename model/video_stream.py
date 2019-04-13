@@ -37,7 +37,9 @@ def request_handler():
       res_x = request.form.get('resolution_x')
       res_y = request.form.get('resolution_y')
       camera= Camera(res_x,res_y)
-      return video_feed(camera)
+      video_feed(camera)
+      return json.dumps{'msg':resolution changed}
+    self.video_feed()
 def video_feed(camera=None):
     if camera is None:
         camera = Camera(640,480)
