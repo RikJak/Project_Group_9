@@ -14,6 +14,7 @@ class Camera(object):
     def __init__(self,res_x, res_y):
         RES_X = res_x
         RES_Y = res_y
+        print(res_x)
 
     def set_resolution(self,res_x,res_y):
         RES_X = res_x
