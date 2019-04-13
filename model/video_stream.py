@@ -46,7 +46,7 @@ def video_feed(CAMERA=None):
     global RES_Y    
     if CAMERA is None:
         CAMERA = Camera(RES_X,RES_Y)
-    print(f"The resolution is {CAMERA.get_res()}")
+    # print(f"The resolution is {CAMERA.get_res()}")
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(gen(CAMERA), mimetype='multipart/x-mixed-replace; boundary=frame')
 
