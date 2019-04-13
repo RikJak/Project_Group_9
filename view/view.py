@@ -13,8 +13,7 @@ controller = Controller()
 def request_handler():
    if request.method == 'POST':
       email = request.args.get('email')
-      print(email)
-      api_key = request.form.get('api_key')
+      api_key = request.args.get('api_key')
       client_ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
       # client_ip = request.environ.get('REMOTE_ADDR')
       return controller.set_up_stream(email,api_key,client_ip)  
