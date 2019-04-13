@@ -40,10 +40,9 @@ def gen(camera):
 #         res_y = request.form.get('resolution_y')
 #         camera= Camera(res_x,res_y)
 #         video_feed(camera)
-def video_feed():
-# def video_feed(CAMERA=None):
-#     if CAMERA is None:
-#         CAMERA = Camera(640,480)
+def video_feed(CAMERA=None):
+    if CAMERA is None:
+        CAMERA = Camera(640,480)
     print(CAMERA.get_res())
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(gen(CAMERA), mimetype='multipart/x-mixed-replace; boundary=frame')
@@ -55,8 +54,8 @@ def request_handler():
         res_y = request.args.get('res_y')
         CAMERA = Camera(res_x,res_y)
         resolution = f"{res_x}x{res_y}"
-        video_feed()
-        return json.dumps({'msg':'ok','res':resolution})
+        return video_feed(CAMERA)
+        # return json.dumps({'msg':'ok','res':resolution})
 
       
 
