@@ -12,6 +12,8 @@ class Camera(object):
     last_access = 0  # time of last client access to the camera
 
     def __init__(self,res_x, res_y):
+        global RES_X
+        global RES_Y
         RES_X = res_x
         RES_Y = res_y
         print(res_x)
