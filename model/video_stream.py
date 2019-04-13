@@ -6,7 +6,8 @@ from flask import Flask, render_template, Response, request, abort
 from camera_pi import Camera
 import json
 # Raspberry Pi camera module (requires picamera package)
-
+RES_X=640
+RES_Y=480
 PORT = 8000
 CAMERA = Camera(480,360)
 number_of_args=len(sys.argv)
@@ -40,9 +41,11 @@ def gen(camera):
 #         res_y = request.form.get('resolution_y')
 #         camera= Camera(res_x,res_y)
 #         video_feed(camera)
-def video_feed(CAMERA=None):    
+def video_feed(CAMERA=None):
+    global RES_X
+    global RES_Y    
     if CAMERA is None:
-        CAMERA = Camera(480,360)
+        CAMERA = Camera(RES_X,RES_Y)
     print(f"The resolution is {CAMERA.get_res()}")
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(gen(CAMERA), mimetype='multipart/x-mixed-replace; boundary=frame')
@@ -50,12 +53,14 @@ def video_feed(CAMERA=None):
 @app.route('/settings', methods = ['POST','GET'])
 def request_handler():
     if request.method == 'POST' or request.method == 'GET':
-        res_x = request.args.get('res_x')
-        res_y = request.args.get('res_y')
-        CAMERA = Camera(res_x,res_y)
-        resolution=(f"{res_x}x{res_y}")
+        global RES_X
+        global RES_Y
+        RES_X = request.args.get('res_x')
+        RES_Y = request.args.get('res_y')
+        CAMERA = Camera(RES_X,RES_Y)
+        resolution=(f"{RES_X}x{RES_Y}")
         # return 
-        video_feed(CAMERA)
+        # video_feed(CAMERA)
         return json.dumps({'msg':'ok','res':resolution})
 
       
