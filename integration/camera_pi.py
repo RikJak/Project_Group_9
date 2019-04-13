@@ -18,7 +18,7 @@ class Camera(object):
     def set_resolution(self,res_x,res_y):
         RES_X = res_x
         RES_Y = res_y
-    def get_res():
+    def get_res(self):
         return RES_X
     def changed_resolution(self):
         if CUR_RES_X != RES_X or CUR_RES_Y != RES_Y:
