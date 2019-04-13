@@ -23,6 +23,7 @@ class Camera(object):
         if CUR_RES_X != RES_X or CUR_RES_Y != RES_Y:
             return True
         return False
+
     def initialize(self):
         if Camera.thread is None:
             # start background frame thread
@@ -54,10 +55,10 @@ class Camera(object):
             for foo in camera.capture_continuous(stream, 'jpeg',
                                                  use_video_port=True):
                 # store frame
-                if self.changed_resolution():
-                    camera.resolution(RES_X,RES_Y)
-                    CUR_RES_X = RES_X
-                    CUR_RES_Y = RES_Y
+                # if self.changed_resolution() is True:
+                #     camera.resolution(RES_X,RES_Y)
+                #     CUR_RES_X = RES_X
+                #     CUR_RES_Y = RES_Y
 
                 stream.seek(0)
                 self.frame = stream.read()
