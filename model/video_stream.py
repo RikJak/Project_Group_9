@@ -7,6 +7,7 @@ from camera_pi import Camera
 # Raspberry Pi camera module (requires picamera package)
 
 PORT = 8000
+CAMERA = Camera(640,480)
 number_of_args=len(sys.argv)
 
 app = Flask(__name__)
@@ -39,19 +40,18 @@ def gen(camera):
 #         camera= Camera(res_x,res_y)
 #         video_feed(camera)
 
-def video_feed(camera=None):
-    if camera is None:
-        camera = Camera(640,480)
+def video_feed(CAMERA=None):
+    if CAMERA is None:
+        CAMERA = Camera(640,480)
     """Video streaming route. Put this in the src attribute of an img tag."""
-    return Response(gen(camera), mimetype='multipart/x-mixed-replace; boundary=frame')
+    return Response(gen(CAMERA), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-# @app.route('/settings', methods = ['POST'])
-# def request_handler():
-#    if request.method == 'POST':
-#       res_x = request.form.get('resolution_x')
-#       res_y = request.form.get('resolution_y')
-#       camera= Camera(res_x,res_y)
-#       return video_feed(camera)
+@app.route('/settings', methods = ['POST'])
+def request_handler():
+   if request.method == 'POST':
+        res_x = request.form.get('resolution_x')
+        res_y = request.form.get('resolution_y')
+        CAMERA.set_resolution(res_x,res_y)
 
       
 
