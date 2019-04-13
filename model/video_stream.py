@@ -52,7 +52,7 @@ def request_handler():
    if request.method == 'POST':
         res_x = request.form.get('resolution_x')
         res_y = request.form.get('resolution_y')
-        CAMERA.set_resolution(res_x,res_y)
+        CAMERA = Camera(res_x,res_y)
         return json.dumps({'msg':'ok'})
 
       
