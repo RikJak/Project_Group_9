@@ -44,6 +44,7 @@ def video_feed():
 # def video_feed(CAMERA=None):
 #     if CAMERA is None:
 #         CAMERA = Camera(640,480)
+    print(CAMERA.get_res())
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(gen(CAMERA), mimetype='multipart/x-mixed-replace; boundary=frame')
 
