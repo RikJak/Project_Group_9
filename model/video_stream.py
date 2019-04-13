@@ -53,7 +53,7 @@ def request_handler():
         res_x = request.args.get('res_x')
         res_y = request.args.get('res_y')
         CAMERA = Camera(res_x,res_y)
-        print(f"{res_x}x{res_y}")
+        resolution=(f"{res_x}x{res_y}")
         # return 
         video_feed(CAMERA)
         return json.dumps({'msg':'ok','res':resolution})
