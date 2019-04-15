@@ -32,6 +32,7 @@ class StreamHandler:
 
     def reboot(self,email,api_key):
         valid = self.validate.validate_user(email,api_key)
+        valid = True # will be removed if real validation is made!
         if (valid):
             os.system("sudo reboot")
             return {'msg': 'Rebooting'}
