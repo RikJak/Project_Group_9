@@ -29,7 +29,11 @@ class StreamHandler:
             os.system(start_command)
             return json.dumps({'port':PORT, 'server_ip': SERVER_IP})
         return '', 403
-            
+
+    def reboot(self,email,api_key):
+        valid = self.validate.validate_user(email,api_key)
+        if (valid):
+            os.system("sudo reboot")
 
 # class StreamingServer(socketserver.ThreadingMixIn, server.HTTPServer):
 #     allow_reuse_address = True

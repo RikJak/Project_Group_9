@@ -12,4 +12,7 @@ class Controller:
     def set_up_stream(self,email,api_key,client_ip):
         return self.handler.set_up_stream(email,api_key,client_ip)
 
+    def reboot(self, email,api_key):
+        return self.handler.reboot(email,api_key)
+
     

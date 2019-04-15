@@ -18,6 +18,12 @@ def request_handler():
       # client_ip = request.environ.get('REMOTE_ADDR')
       return controller.set_up_stream(email,api_key,client_ip)  
       # return redirect(url_for('success',name = user))
+@app.route('/reboot', methods = ['POST'])
+def request_reboot()
+   if request.method == 'POST':
+      email = request.args.get('email')
+      api_key = request.args.get('api_key')
+      return controller.reboot(email,api_key)
 
 if __name__ == '__main__':
    app.run(host = SERVER_IP, debug=True)
