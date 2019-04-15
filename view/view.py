@@ -19,7 +19,7 @@ def request_handler():
       return controller.set_up_stream(email,api_key,client_ip)  
       # return redirect(url_for('success',name = user))
 @app.route('/reboot', methods = ['POST'])
-def request_reboot()
+def request_reboot():
    if request.method == 'POST':
       email = request.args.get('email')
       api_key = request.args.get('api_key')
