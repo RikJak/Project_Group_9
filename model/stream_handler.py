@@ -34,7 +34,8 @@ class StreamHandler:
         valid = self.validate.validate_user(email,api_key)
         valid = True # will be removed if real validation is made!
         if (valid):
-            os.system("sudo killall python3 & sudo python3 view.py")
+            python = sys.executable
+            os.execl(python, python, * sys.argv)
             return {'msg': 'Rebooting'}
         return '', 403
 
