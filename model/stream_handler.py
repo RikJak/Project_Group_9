@@ -34,6 +34,8 @@ class StreamHandler:
         valid = self.validate.validate_user(email,api_key)
         if (valid):
             os.system("sudo reboot")
+            return {'msg': 'Rebooting'}
+        return '', 403
 
 # class StreamingServer(socketserver.ThreadingMixIn, server.HTTPServer):
 #     allow_reuse_address = True
