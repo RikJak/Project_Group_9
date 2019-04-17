@@ -70,6 +70,7 @@ def shutdown_stream():
         valid = True # will be removed if real validation is made!
         if (valid):
             shutdown_server()
+            return ':ok', 200
         return '', 403
 
 # @app.route('/photo', methods = ['POST'])
