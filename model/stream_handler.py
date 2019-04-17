@@ -45,9 +45,9 @@ class StreamHandler:
     
     def get_photo(self):
         with picamera.PiCamera() as camera:
-        name =random.randint(1,99999999999999999999)
-        camera.capture(f"/home/pi/Desktop/Pictures/{name}.jpeg")
-        return 'Picture taken', 200
+            name =random.randint(1,99999999999999999999)
+            camera.capture(f"/home/pi/Desktop/Pictures/{name}.jpeg")
+            return 'Picture taken', 200
 
     # def camera_init(self):
     #     return PiCamera()
