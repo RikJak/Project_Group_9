@@ -13,7 +13,7 @@ from validate import Validate
 # from threading import Condition
 # from http import server
 import json
-import subprocess
+from subprocess import call
 
 
 PORT = 8000
@@ -27,6 +27,7 @@ class StreamHandler:
         valid = True # this will ba taken away when the validate server is up and working
         if (valid):
             subprocess.call(['python3', '/home/Project_Group_9/model/video_stream.py', str(client_ip), str(PORT)])
+            call(f"python3 /home/Project_Group_9/model/video_stream.py {client_ip} {PORT}", shell=True)
             # run("/home/Project_Group_9/model/video_stream.py", client_ip, PORT)
             # start_command = f"sudo python3 /home/Project_Group_9/model/video_stream.py {client_ip} {PORT} &"
             # os.system(start_command)
