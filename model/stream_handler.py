@@ -16,8 +16,6 @@ import json
 from subprocess import call
 from picamera import PiCamera
 import random
-
-camera = PiCamera()
 PORT = 8000
 SERVER_IP = '130.237.215.167'
 class StreamHandler:
