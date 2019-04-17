@@ -45,5 +45,5 @@ class StreamHandler:
     
     def get_photo(self):
         camera = PiCamera()
-        camera.capture('home/pi/Desktop/Pictures/picture.jpeg')
+        camera.capture('/home/pi/Desktop/Pictures/picture.jpeg')
         return 'Picture taken', 200
