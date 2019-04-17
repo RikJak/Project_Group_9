@@ -60,7 +60,7 @@ def request_handler():
         CAMERA = Camera(RES_X,RES_Y)
         resolution=(f"{RES_X}x{RES_Y}")
         # return 
-        # video_feed(CAMERA)
+        video_feed(CAMERA)
         return json.dumps({'msg':'ok','res':resolution})
 
 # @app.route('/photo', methods = ['POST'])
