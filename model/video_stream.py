@@ -63,12 +63,10 @@ def request_handler():
         # video_feed(CAMERA)
         return json.dumps({'msg':'ok','res':resolution})
 
-@app.route('/photo', methods = ['POST'])
+# @app.route('/photo', methods = ['POST'])
       
 
-
-if __name__ == '__main__':
-    app.run(host='130.237.215.167', port =PORT, debug=True, threaded=True)
+app.run(host='130.237.215.167', port =PORT, debug=True, threaded=True)
 # # def start_stream(client_ip,port):
 # PORT = 8000
 # SERVER_IP = '130.237.215.167'
