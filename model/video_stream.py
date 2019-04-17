@@ -30,9 +30,6 @@ def limit_remote_addr():
          abort(403)
 
 @app.route('/')
-
-      
-
 def gen(camera):
     """Video streaming generator function."""
     while True:
@@ -42,12 +39,6 @@ def gen(camera):
 
 
 @app.route('/video_feed')
-# def request_handler():
-#    if request.method == 'POST':
-#         res_x = request.form.get('resolution_x')
-#         res_y = request.form.get('resolution_y')
-#         camera= Camera(res_x,res_y)
-#         video_feed(camera)
 def video_feed(CAMERA=None):
     global RES_X
     global RES_Y    
@@ -66,7 +57,6 @@ def request_handler():
         RES_Y = request.args.get('res_y')
         CAMERA = Camera(RES_X,RES_Y)
         resolution=(f"{RES_X}x{RES_Y}")
-        # return 
         video_feed(CAMERA)
         return json.dumps({'msg':'ok','res':resolution})
 
@@ -84,8 +74,8 @@ def shutdown_stream():
 
 # @app.route('/photo', methods = ['POST'])
       
-
-app.run(host='130.237.215.167', port =PORT, debug=True, threaded=True)
+if __name__ == '__main__':
+    app.run(host='130.237.215.167', port =PORT, debug=True, threaded=True)
 # # def start_stream(client_ip,port):
 # PORT = 8000
 # SERVER_IP = '130.237.215.167'
