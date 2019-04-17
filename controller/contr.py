@@ -8,8 +8,7 @@ from stream_handler import StreamHandler
 class Controller:
     def __init__(self):
         self.handler = StreamHandler()
-        self.camera= self.handler.camera_init()
-    
+        
     def set_up_stream(self,email,api_key,client_ip):
         return self.handler.set_up_stream(email,api_key,client_ip)
 
@@ -17,4 +16,4 @@ class Controller:
         return self.handler.reboot(email,api_key)
 
     def get_photo(self):
-        return self.handler.get_photo(self.camera)    
+        return self.handler.get_photo()    
