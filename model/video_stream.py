@@ -5,6 +5,7 @@ sys.path.append(f"{FILE_DIR}/../integration")
 from flask import Flask, render_template, Response, request, abort
 from camera_pi import Camera
 import json
+from validate import Validate
 # Raspberry Pi camera module (requires picamera package)
 RES_X=640
 RES_Y=480
@@ -62,6 +63,19 @@ def request_handler():
         # return 
         video_feed(CAMERA)
         return json.dumps({'msg':'ok','res':resolution})
+        
+@app.route('/settings', methods = ['POST'])
+def restart_stream():
+    if request.method == 'POST':
+        validate = Validate()
+        email = request.args.get('email')
+        api_key = request.args.get('api_key')
+        valid = validate.validate_user(email,api_key)
+        valid = True # will be removed if real validation is made!
+        if (valid):
+            os.execl(sys.executable, sys.executable, *sys.argv)
+            return {'msg': 'Rebooting'}
+        return '', 403
 
 # @app.route('/photo', methods = ['POST'])
       
