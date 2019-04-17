@@ -14,7 +14,7 @@ from validate import Validate
 # from http import server
 import json
 from subprocess import call
-from picamera import PiCamera
+import picamera
 import random
 PORT = 8000
 SERVER_IP = '130.237.215.167'
