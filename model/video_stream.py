@@ -14,6 +14,11 @@ CAMERA = Camera(480,360)
 number_of_args=len(sys.argv)
 
 app = Flask(__name__)
+def shutdown_server():
+    func = request.environ.get('werkzeug.server.shutdown')
+    if func is None:
+        raise RuntimeError('Not running with the Werkzeug Server')
+    func()
 @app.before_request
 def limit_remote_addr():
     if  number_of_args >1:
@@ -64,8 +69,8 @@ def request_handler():
         video_feed(CAMERA)
         return json.dumps({'msg':'ok','res':resolution})
 
-@app.route('/restart_feed', methods = ['POST'])
-def restart_stream():
+@app.route('/shutdown_stream', methods = ['POST'])
+def shutdown_stream():
     if request.method == 'POST':
         validate = Validate()
         email = request.args.get('email')
@@ -73,7 +78,7 @@ def restart_stream():
         valid = validate.validate_user(email,api_key)
         valid = True # will be removed if real validation is made!
         if (valid):
-            os.execl(sys.executable, sys.executable, *sys.argv)
+            shutdown_server()
             return {'msg': 'Rebooting'}
         return '', 403
 
