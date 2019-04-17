@@ -19,7 +19,7 @@ def shutdown_server():
     if func is None:
         raise RuntimeError('Not running with the Werkzeug Server')
     func()
-    
+
 @app.before_request
 def limit_remote_addr():
     if  number_of_args >1:
@@ -80,7 +80,6 @@ def shutdown_stream():
         valid = True # will be removed if real validation is made!
         if (valid):
             shutdown_server()
-            # return {'msg': 'Rebooting'}
         return '', 403
 
 # @app.route('/photo', methods = ['POST'])
