@@ -26,7 +26,7 @@ class StreamHandler:
         valid = self.validate.validate_user(email,api_key)
         valid = True # this will ba taken away when the validate server is up and working
         if (valid):
-            subprocess.call(['python3', '/home/Project_Group_9/model/video_stream.py', str(client_ip), str(PORT)])
+            # subprocess.call(['python3', '/home/Project_Group_9/model/video_stream.py', str(client_ip), str(PORT)])
             call(f"python3 /home/Project_Group_9/model/video_stream.py {client_ip} {PORT}", shell=True)
             # run("/home/Project_Group_9/model/video_stream.py", client_ip, PORT)
             # start_command = f"sudo python3 /home/Project_Group_9/model/video_stream.py {client_ip} {PORT} &"
