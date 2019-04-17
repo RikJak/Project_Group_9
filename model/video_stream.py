@@ -63,8 +63,8 @@ def request_handler():
         # return 
         video_feed(CAMERA)
         return json.dumps({'msg':'ok','res':resolution})
-        
-@app.route('/settings', methods = ['POST'])
+
+@app.route('/restart_feed', methods = ['POST'])
 def restart_stream():
     if request.method == 'POST':
         validate = Validate()
