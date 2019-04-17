@@ -24,6 +24,8 @@ def request_reboot():
       email = request.args.get('email')
       api_key = request.args.get('api_key')
       return controller.reboot(email,api_key)
-
+@app.route('/photo', methods = ['POST'])
+def get_photo():
+   return controller.get_photo()
 if __name__ == '__main__':
    app.run(host = SERVER_IP, debug=True)

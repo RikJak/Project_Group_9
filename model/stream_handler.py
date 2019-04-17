@@ -14,6 +14,7 @@ from validate import Validate
 # from http import server
 import json
 from subprocess import call
+from picamera import PiCamera
 
 
 PORT = 8000
@@ -41,3 +42,8 @@ class StreamHandler:
             os.system('sudo reboot')
             return {'msg': 'Rebooting'}
         return '', 403
+    
+    def get_photo(self):
+        camera = PiCamera()
+        camera.capture('home/pi/Desktop/Pictures/picture.jpeg')
+        return 'Picture taken', 200

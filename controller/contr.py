@@ -15,4 +15,5 @@ class Controller:
     def reboot(self, email,api_key):
         return self.handler.reboot(email,api_key)
 
-    
+    def get_photo(self):
+        return self.handler.get_photo()    
