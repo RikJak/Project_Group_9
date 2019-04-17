@@ -64,7 +64,6 @@ def request_handler():
         return json.dumps({'msg':'ok','res':resolution})
 
 @app.route('/photo', methods = ['POST'])
-def get_photo
       
 
 
