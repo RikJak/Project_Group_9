@@ -63,6 +63,8 @@ def request_handler():
         # video_feed(CAMERA)
         return json.dumps({'msg':'ok','res':resolution})
 
+@app.route('/photo', methods = ['POST'])
+def get_photo
       
 
 
