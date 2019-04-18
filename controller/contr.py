@@ -4,6 +4,7 @@ import sys
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(f"{FILE_DIR}/../model")
 from stream_handler import StreamHandler
+from photo_handler import PhotoHandler
 
 class Controller:
     def __init__(self):
