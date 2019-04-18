@@ -1,16 +1,19 @@
 import os
 import sys
 from flask_cors import CORS, cross_origin
-
+from contr import Controller
+from flask import Flask, redirect, url_for, request
 
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(f"{FILE_DIR}/../controller")
+
 SERVER_IP = '130.237.215.167'
-from contr import Controller
-from flask import Flask, redirect, url_for, request
+
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 controller = Controller()
+
+
 @app.route('/',methods = ['POST'])
 def request_handler():
    if request.method == 'POST':
@@ -20,14 +23,20 @@ def request_handler():
       # client_ip = request.environ.get('REMOTE_ADDR')
       return controller.set_up_stream(email,api_key,client_ip)  
       # return redirect(url_for('success',name = user))
+
 @app.route('/reboot', methods = ['POST'])
 def request_reboot():
    if request.method == 'POST':
       email = request.args.get('email')
       api_key = request.args.get('api_key')
       return controller.reboot(email,api_key)
+
 @app.route('/photo', methods = ['POST'])
 def get_photo():
    return controller.get_photo()
+
+@app.route('/get_MAC', methods = ['POST'])
+def get_MAC():
+   return controller.get_MAC_address()
 if __name__ == '__main__':
    app.run(host = SERVER_IP, debug=True)
