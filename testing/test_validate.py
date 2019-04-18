@@ -15,7 +15,7 @@ class TestDBConnection(unittest.TestCase):
     def test_validation(self):
         self.assertTrue(validate.validate_user(TEST_USER,TEST_KEY))
         self.assertFalse(validate.validate_user(TEST_INVALID_USER,TEST_KEY))
-        self.assertFalse(validate.validate_user(TEST_USER,TEST_KEY))
+        self.assertFalse(validate.validate_user(TEST_USER,TEST_INVALID_KEY))
         self.assertFalse(validate.validate_user(TEST_INVALID_USER,TEST_INVALID_KEY))
     
     
