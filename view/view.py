@@ -9,7 +9,6 @@ import json
 
 controller = Controller()
 SERVER_IP = json.loads(controller.get_IP_address())["IP_address"]
-print(SERVER_IP)
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
