@@ -5,7 +5,7 @@ class Device:
     def get_MAC_address(self):
         return hex(uuid.getnode())
 
-    def get_IP(self):
+    def get_IP_address(self):
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         try:
             # doesn't even have to be reachable
