@@ -7,13 +7,12 @@ from validate import Validate
 import json
 from subprocess import call
 PORT = 8000
-SERVER_IP = '130.237.215.167'
 class StreamHandler:
     def __init__(self):
         self.validate= Validate()
         
 
-    def set_up_stream(self,email,api_key,client_ip):
+    def set_up_stream(self,email,api_key,client_ip,server_IP):
         valid = self.validate.validate_user(email,api_key)
         valid = True # this will ba taken away when the validate server is up and working
         if (valid):
@@ -22,7 +21,7 @@ class StreamHandler:
             # run("/home/Project_Group_9/model/video_stream.py", client_ip, PORT)
             start_command = f"sudo python3 /home/Project_Group_9/model/video_stream.py {client_ip} {PORT} &"
             os.system(start_command)
-            return json.dumps({'port':PORT, 'server_ip': SERVER_IP})
+            return json.dumps({'port':PORT, 'server_ip': server_IP})
         return '', 403
 
     def reboot(self,email,api_key):

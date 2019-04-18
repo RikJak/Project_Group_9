@@ -13,8 +13,8 @@ class Controller:
         self.photo_handler = PhotoHandler()
         self.device_info_handler = DeviceInfoHandler()
         
-    def set_up_stream(self,email,api_key,client_ip):
-        return self.handler.set_up_stream(email,api_key,client_ip)
+    def set_up_stream(self,email,api_key,client_IP,server_IP):
+        return self.handler.set_up_stream(email,api_key,client_IP,server_IP)
 
     def reboot(self, email,api_key):
         return self.handler.reboot(email,api_key)
