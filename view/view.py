@@ -8,6 +8,7 @@ from flask import Flask, redirect, url_for, request
 
 controller = Controller()
 SERVER_IP = controller.get_IP_address()
+print(SERVER_IP)
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
