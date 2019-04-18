@@ -39,5 +39,10 @@ def get_photo():
 @app.route('/get_MAC', methods = ['POST'])
 def get_MAC():
    return controller.get_MAC_address()
+
+@app.route('/get_IP', methods = ['POST'])
+def get_IP():
+   return controller.get_IP_address()
+
 if __name__ == '__main__':
    app.run(host = SERVER_IP, debug=True)

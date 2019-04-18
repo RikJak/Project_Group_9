@@ -24,3 +24,6 @@ class Controller:
 
     def get_MAC_address(self):
         return self.device_info_handler.get_MAC_address()
+
+    def get_IP_address(self):
+        return self.device_info_handler.get_IP_address()
