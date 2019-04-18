@@ -3,8 +3,6 @@
 import requests
 import json
 class Validate:
-    TEST_USER = 'mhild@kth.se'
-    TEST_KEY = 'Db-fNOW05Mwe4dcN8AhRdNPRSCtQi8PUInt5Uy3Q'
 
     def validate_user(self,email,api_key):
         """This method contacts the cloud server to verify that the user is valid. If status code 200 is returned the user is valid, and the function returns true

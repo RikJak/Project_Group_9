@@ -42,5 +42,10 @@ def get_MAC():
 def get_IP():
    return controller.get_IP_address()
 
+@app.route('/register', methods = ['POST'])
+def register():
+   server_IP =request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+   return controller.register_user(server_IP)
+
 if __name__ == '__main__':
    app.run(host = SERVER_IP, debug=True)

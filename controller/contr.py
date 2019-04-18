@@ -6,12 +6,14 @@ sys.path.append(f"{FILE_DIR}/../model")
 from stream_handler import StreamHandler
 from photo_handler import PhotoHandler
 from device_info_handler import DeviceInfoHandler
+from device_handler import DeviceHandler
 
 class Controller:
     def __init__(self):
         self.handler = StreamHandler()
         self.photo_handler = PhotoHandler()
         self.device_info_handler = DeviceInfoHandler()
+        self.device_handler = DeviceHandler()
         
     def set_up_stream(self,email,api_key,client_IP,server_IP):
         return self.handler.set_up_stream(email,api_key,client_IP,server_IP)
@@ -27,3 +29,6 @@ class Controller:
 
     def get_IP_address(self):
         return self.device_info_handler.get_IP_address()
+
+    def register(self,server_IP):
+        return self.device_handler.register_device(server_IP)
