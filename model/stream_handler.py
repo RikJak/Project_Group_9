@@ -14,8 +14,8 @@ from validate import Validate
 # from http import server
 import json
 from subprocess import call
-import picamera
-import random
+# import picamera
+# import random
 PORT = 8000
 SERVER_IP = '130.237.215.167'
 class StreamHandler:
@@ -43,11 +43,11 @@ class StreamHandler:
             return {'msg': 'Rebooting'}
         return '', 403
     
-    def get_photo(self):
-        with picamera.PiCamera() as camera:
-            name =random.randint(1,99999999999999999999)
-            camera.capture(f"/home/pi/Desktop/Pictures/{name}.jpeg")
-            return 'Picture taken', 200
+    # def get_photo(self):
+    #     with picamera.PiCamera() as camera:
+    #         name =random.randint(1,99999999999999999999999999999999999999999999999999999999999999999999999999999)
+    #         camera.capture(f"/home/pi/Desktop/Pictures/{name}.jpeg")
+    #         return 'Picture taken', 200
 
     # def camera_init(self):
     #     return PiCamera()

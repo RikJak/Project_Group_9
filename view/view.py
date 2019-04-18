@@ -1,5 +1,6 @@
 import os
 import sys
+from flask_cors import CORS, cross_origin
 
 
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -8,6 +9,7 @@ SERVER_IP = '130.237.215.167'
 from contr import Controller
 from flask import Flask, redirect, url_for, request
 app = Flask(__name__)
+cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 controller = Controller()
 @app.route('/',methods = ['POST'])
 def request_handler():

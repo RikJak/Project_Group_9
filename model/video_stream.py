@@ -6,6 +6,7 @@ from flask import Flask, render_template, Response, request, abort
 from camera_pi import Camera
 import json
 from validate import Validate
+from flask_cors import CORS, cross_origin
 # Raspberry Pi camera module (requires picamera package)
 RES_X=640
 RES_Y=480
@@ -14,6 +15,7 @@ CAMERA = Camera(480,360)
 number_of_args=len(sys.argv)
 
 app = Flask(__name__)
+cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 def shutdown_server():
     func = request.environ.get('werkzeug.server.shutdown')
     if func is None:
