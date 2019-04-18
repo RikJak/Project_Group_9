@@ -5,9 +5,10 @@ sys.path.append(f"{FILE_DIR}/../controller")
 from flask_cors import CORS, cross_origin
 from contr import Controller
 from flask import Flask, redirect, url_for, request
+import json
 
 controller = Controller()
-SERVER_IP = controller.get_IP_address()
+SERVER_IP = json.loads(controller.get_IP_address())["IP_address"]
 print(SERVER_IP)
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
