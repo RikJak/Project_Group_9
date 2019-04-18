@@ -15,6 +15,6 @@ class DeviceHandler:
         self.file = FileWriter()
     
     def register_device(self,webserver_IP):
-        local_IP = self.device.get_IP_address()
+        local_IP = json.loads(self.device.get_IP_address())["IP_address"]
         self.file.make_config({'local_IP': local_IP,'webserver_IP':webserver_IP})
         return json.dumps({'msg': 'Device registred'})
