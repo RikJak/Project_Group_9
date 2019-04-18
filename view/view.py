@@ -1,11 +1,12 @@
 import os
 import sys
+FILE_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(f"{FILE_DIR}/../controller")
 from flask_cors import CORS, cross_origin
 from contr import Controller
 from flask import Flask, redirect, url_for, request
 
-FILE_DIR = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(f"{FILE_DIR}/../controller")
+
 
 SERVER_IP = '130.237.215.167'
 
