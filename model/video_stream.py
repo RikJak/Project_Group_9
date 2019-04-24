@@ -27,7 +27,7 @@ def limit_remote_addr():
     if  number_of_args >1:
         client_ip = sys.argv[1]
         PORT = sys.argv[2]
-
+        
     if request.remote_addr != client_ip:
          abort(403)
 
@@ -75,31 +75,6 @@ def shutdown_stream():
             return ':ok', 200
         return '', 403
 
-# @app.route('/photo', methods = ['POST'])
-      
 if __name__ == '__main__':
-    app.run(host='130.237.215.167', port =PORT, debug=True, threaded=True)
-# # def start_stream(client_ip,port):
-# PORT = 8000
-# SERVER_IP = '130.237.215.167'
-# app = Flask(__name__)
-#     # app.run(host=SERVER_IP, port = PORT, debug=True, threaded=True)
-#     # @app.before_request
-#     # def limit_remote_addr():
-#     #         if request.remote_addr != client_ip:
-#     #             abort(403)
-# @app.route('/')
-#         # def index():
-#         #     """Video streaming home page."""
-#         #     return render_template('index.html')
-# def gen(camera):
-#     """Video streaming generator function."""
-#     while True:
-#         frame = camera.get_frame()
-#         yield (b'--frame\r\n'+b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
-# @app.route('/video_feed')
-# def video_feed():
-#         """Video streaming route. Put this in the src attribute of an img tag."""
-#         return Response(gen(Camera()), mimetype='multipart/x-mixed-replace; boundary=frame')
-# if __name__ == '__main__':
-#   app.run(host=SERVER_IP, port = PORT, debug=True, threaded=True)
+    server_IP= sys.argv[3]
+    app.run(host=server_IP, port =PORT, debug=True, threaded=True)

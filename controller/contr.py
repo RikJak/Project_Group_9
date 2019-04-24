@@ -7,6 +7,7 @@ from stream_handler import StreamHandler
 from photo_handler import PhotoHandler
 from device_info_handler import DeviceInfoHandler
 from device_handler import DeviceHandler
+from sensor_handler import SensorHandler
 
 class Controller:
     def __init__(self):
@@ -14,6 +15,7 @@ class Controller:
         self.photo_handler = PhotoHandler()
         self.device_info_handler = DeviceInfoHandler()
         self.device_handler = DeviceHandler()
+        self.sensor_handler = SensorHandler()
         
     def set_up_stream(self,email,api_key,client_IP,server_IP):
         return self.handler.set_up_stream(email,api_key,client_IP,server_IP)
@@ -35,3 +37,6 @@ class Controller:
 
     def verify_IP(self,server_IP):
         return self.device_handler.verify_IP(server_IP)
+
+    def start_sensor(self,email,api_key,client_IP,server_IP):
+        return self.sensor_handler.start_sensor(email,api_key,client_IP,server_IP)

@@ -16,20 +16,16 @@ print(f"IP is correct : {controller.verify_IP(SERVER_IP)}")
 
 @app.route('/',methods = ['POST'])
 def request_handler():
-   if request.method == 'POST':
-      email = request.args.get('email')
-      api_key = request.args.get('api_key')
-      client_IP = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
-      # client_IP = request.environ.get('REMOTE_ADDR')
-      return controller.set_up_stream(email,api_key,client_IP,SERVER_IP)  
-      # return redirect(url_for('success',name = user))
+   email = request.args.get('email')
+   api_key = request.args.get('api_key')
+   client_IP = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+   return controller.set_up_stream(email,api_key,client_IP,SERVER_IP)  
 
 @app.route('/reboot', methods = ['POST'])
 def request_reboot():
-   if request.method == 'POST':
-      email = request.args.get('email')
-      api_key = request.args.get('api_key')
-      return controller.reboot(email,api_key)
+   email = request.args.get('email')
+   api_key = request.args.get('api_key')
+   return controller.reboot(email,api_key)
 
 @app.route('/photo', methods = ['POST'])
 def get_photo():
@@ -47,6 +43,13 @@ def get_IP():
 def register():
    server_IP =request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
    return controller.register(server_IP)
+
+@app.route('/start_sensor',methods = ['POST'])
+def start_sensor():
+   email = request.args.get('email')
+   api_key = request.args.get('api_key')
+   client_IP = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+   return controller.start_sensor(email,api_key,client_IP)
 
 if __name__ == '__main__':
    app.run(host = SERVER_IP, debug=False)
