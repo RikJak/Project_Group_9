@@ -10,7 +10,7 @@ import json
 controller = Controller()
 SERVER_IP = json.loads(controller.get_IP_address())["IP_address"]
 app = Flask(__name__)
-cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
+# cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 
 @app.route('/',methods = ['POST'])
