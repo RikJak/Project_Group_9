@@ -26,6 +26,8 @@ class DeviceHandler:
         if server_IP != local_IP:
             print(f"local: {local_IP} server {server_IP}")
             MAC = self.device.get_MAC_address()
+            web_IP = self.file.get_webserver_IP()
+            self.register_device(web_IP)
             return self.webserver_connection.change_IP(server_IP,MAC)
         return True
 
