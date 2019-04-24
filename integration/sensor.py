@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import time
+import datetime
 class Sensor():
     def __init__(self):
         GPIO.setmode(GPIO.BOARD)
@@ -11,7 +12,8 @@ class Sensor():
         try:
             while True:
                 if GPIO.input(self.pir) == True:
-                    print("motion detected")
+                    print(f"motion detected at: {datetime.datetime.now()}")
+                    time.sleep(5)
 
         finally:
             GPIO.cleanup()
