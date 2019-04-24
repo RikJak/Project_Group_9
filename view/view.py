@@ -49,4 +49,4 @@ def register():
    return controller.register(server_IP)
 
 if __name__ == '__main__':
-   app.run(host = SERVER_IP, debug=True)
+   app.run(host = SERVER_IP, debug=False)
