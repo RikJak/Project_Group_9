@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import time
 import datetime
 GPIO.setmode(GPIO.BOARD)
-pir = 11
+pir = 17
 GPIO.setup(pir,GPIO.IN)
 time.sleep(2)
 print("Sensor on")
