@@ -10,7 +10,7 @@ try:
     while True:
         if GPIO.input(pir):
             print(f"motion detected at: {datetime.datetime.now()}")
-            time.sleep(5)
+            time.sleep(0.1)
 
 finally:
     GPIO.cleanup()
