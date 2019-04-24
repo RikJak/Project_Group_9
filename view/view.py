@@ -8,7 +8,7 @@ from flask import Flask, redirect, url_for, request
 import json
 
 controller = Controller()
-SERVER_IP = json.loads(controller.get_IP_address())["IP_address"]
+SERVER_IP = controller.get_IP_address()
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
  
@@ -37,11 +37,11 @@ def get_photo():
 
 @app.route('/get_MAC', methods = ['POST'])
 def get_MAC():
-   return controller.get_MAC_address()
+   return json.dumps({'MAC_address': controller.get_MAC_address()})
 
 @app.route('/get_IP', methods = ['POST'])
 def get_IP():
-   return controller.get_IP_address()
+   return json.dumps({'IP_address':controller.get_IP_address()})
 
 @app.route('/register', methods = ['POST'])
 def register():

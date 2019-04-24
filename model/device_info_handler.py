@@ -11,9 +11,9 @@ class DeviceInfoHandler:
         self.device = Device()
 
     def get_MAC_address(self):
-        mac_address = self.device.get_MAC_address()
-        return json.dumps({'MAC_address':mac_address})
+        MAC_address = self.device.get_MAC_address()
+        return MAC_address
     
     def get_IP_address(self):
         IP_address = self.device.get_IP_address()
-        return json.dumps({'IP_address':IP_address})   
+        return IP_address   
