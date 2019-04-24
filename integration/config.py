@@ -12,10 +12,16 @@ class Config:
         with open(PATH,'w+') as outputfile:
             json.dump(str,outputfile)
     
-    def read_config(self,str):
+    def get_local_IP(self):
         if self.file_exists():
             with open(PATH) as outputfile:
-                return json.loads(outputfile)
+                return json.loads(json.loads(outputfile))['local_IP']
         return {}
+    def get_webserver_IP(self):
+        if self.file_exists():
+            with open(PATH) as outputfile:
+                return json.loads(json.loads(outputfile))['webserver_IP']
+        return {}
+                    
                 
 

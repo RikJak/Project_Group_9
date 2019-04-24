@@ -16,4 +16,4 @@ class DeviceInfoHandler:
     
     def get_IP_address(self):
         IP_address = self.device.get_IP_address()
-        return json.dumps({'IP_address':IP_address})
+        return json.dumps({'IP_address':IP_address})   
