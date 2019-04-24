@@ -19,7 +19,7 @@ class DeviceHandler:
     def register_device(self,webserver_IP):
         local_IP = self.device.get_IP_address()
         self.file.make_config({'local_IP': local_IP,'webserver_IP':webserver_IP})
-        return json.dumps({'msg': 'Device registred'})
+        return json.dumps({'local:IP': local_IP, 'webserver_IP': webserver_IP})
 
     def verify_IP(self, server_IP):
         local_IP = self.file.get_local_IP()
