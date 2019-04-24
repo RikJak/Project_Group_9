@@ -10,7 +10,7 @@ info = DeviceInfoHandler()
 class TestGetters(unittest.TestCase):        
 
     def is_hex(self,s):
-        hex_digits = set("0123456789abcdef")
+        hex_digits = set("x0123456789abcdef")
         for char in s:
             if not (char in hex_digits):
                 return False
