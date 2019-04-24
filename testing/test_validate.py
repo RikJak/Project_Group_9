@@ -18,7 +18,5 @@ class TestDBConnection(unittest.TestCase):
         self.assertFalse(validate.validate_user(TEST_USER,TEST_INVALID_KEY))
         self.assertFalse(validate.validate_user(TEST_INVALID_USER,TEST_INVALID_KEY))
     
-    
-
 if __name__ == '__main__':
     unittest.main()
