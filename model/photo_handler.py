@@ -7,4 +7,4 @@ class PhotoHandler:
         with picamera.PiCamera() as camera:
             name = datetime.datetime.now()
             camera.capture(f"/home/pi/Desktop/ServerFiles/Pictures/{name}.jpeg")
-            return json.dumps({'msg':'Picture taken'), 200
+            return json.dumps({'msg':'Picture taken'}), 200
