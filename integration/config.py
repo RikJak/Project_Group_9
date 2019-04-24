@@ -15,13 +15,13 @@ class Config:
     def get_local_IP(self):
         if self.file_exists():
             with open(PATH) as outputfile:
-                return json.loads(outputfile)['local_IP']
+                return json.load(outputfile)['local_IP']
         return {}
-        
+
     def get_webserver_IP(self):
         if self.file_exists():
             with open(PATH) as outputfile:
-                return json.loads(outputfile)['webserver_IP']
+                return json.load(outputfile)['webserver_IP']
         return {}
                     
                 
