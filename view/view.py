@@ -11,8 +11,8 @@ controller = Controller()
 SERVER_IP = json.loads(controller.get_IP_address())["IP_address"]
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
-def verify_IP(): 
-   print(f"IP is correct : {controller.verify_IP(SERVER_IP)}")
+ 
+print(f"IP is correct : {controller.verify_IP(SERVER_IP)}")
 
 @app.route('/',methods = ['POST'])
 def request_handler():
