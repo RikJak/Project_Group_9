@@ -33,5 +33,5 @@ class Controller:
     def register(self,server_IP):
         return self.device_handler.register_device(server_IP)
 
-    def verify_ip(self,server_IP):
+    def verify_IP(self,server_IP):
         return self.device_handler.verify_IP(server_IP)
