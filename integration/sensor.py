@@ -1,6 +1,6 @@
 import RPi.GPIO as GPIO
 import time
-class Sensor:
+class Sensor():
     def __init__(self):
         self.pir = 8
         GPIO.setup(self.pir,GPIO.IN)
