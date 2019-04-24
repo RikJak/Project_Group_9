@@ -11,7 +11,7 @@ try:
     while True:
         if GPIO.input(pir):
             print(f"motion detected at: {datetime.datetime.now()}")
-            r = requests.post('130.237.215.167:5000/photo',verify=False)
+            r = requests.post('130.237.215.167:5000/photo',{"Content-Type":"application/json"},verify=False)
             if(r.status_code == 200):
                 print("Photo taken!")
             time.sleep(4)
