@@ -24,6 +24,7 @@ class DeviceHandler:
     def verify_IP(self, server_IP):
         local_IP = self.file.get_local_IP()
         if server_IP != local_IP:
+            print(f"local: {local_IP} server {server_IP}")
             MAC = self.device.get_MAC_address()
             return self.webserver_connection.change_IP(server_IP,MAC)
         return True
