@@ -11,7 +11,7 @@ class Validate:
         content = {'email':email,'api_key':api_key}
         content = json.dumps(content)
         headers = {"Content-Type":"application/json"}
-        r = requests.post('g9.apic.eu-gb.mybluemix.net/api/user/validate_user', data = content,headers = headers,verify=False)
+        r = requests.post('https://webserver-toolchain-noisy-possum.eu-gb.mybluemix.net/api/user/validate_user', data = content,headers = headers,verify=False)
         #msg = r.content
 
         if(r.status_code == 200):
