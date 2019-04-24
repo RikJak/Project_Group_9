@@ -1,11 +1,11 @@
 import RPi.GPIO as GPIO
 import time
 import datetime
-GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BOARD)
 pir = 8
 GPIO.setup(pir,GPIO.IN)
 time.sleep(2)
-    
+print("Sensor on")
 try:
     while True:
         if GPIO.input(pir):
