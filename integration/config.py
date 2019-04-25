@@ -1,7 +1,7 @@
 from pathlib import Path
 import json
 PATH = '/home/pi/Desktop/ServerFiles/config.txt'
-class Config():
+class Config:
     # def __init__(self):
 
     def file_exists(self):
