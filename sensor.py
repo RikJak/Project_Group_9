@@ -50,6 +50,5 @@ def sensor_off():
     sensor_pi.sensor_off()
 
 if __name__ == '__main__':
-    global server_IP
     app.run(host=server_IP, port=PORT, debug=True, threaded=True)
     
