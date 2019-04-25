@@ -6,7 +6,7 @@ class WebserverConnection:
     def __init__(self):
 
         config = Config()
-        self.webserver_address= config.get_webserver_IP
+        self.webserver_address= config.get_webserver_IP()
 
     def change_IP(self,server_IP,MAC):
         # content = {'server_IP':server_IP,'MAC_address':MAC}
