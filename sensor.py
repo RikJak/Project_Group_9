@@ -25,7 +25,7 @@ sensor_pi = None
 
 @app.before_request
 def limit_remote_addr():
-    if request.remote_addr != client_ip:
+    if request.remote_addr != client_ip and request.remote_addr != server_IP:
          abort(403)
 
 @app.route('/sensor_on', methods = ['POST'])
