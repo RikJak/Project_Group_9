@@ -22,5 +22,5 @@ class Validate():
             return True
 
 
-        return False #Change when it's working
+        return True #Change when it's working
     
