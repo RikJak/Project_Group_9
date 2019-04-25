@@ -38,7 +38,7 @@ def limit_remote_addr():
 
 @app.route('/sensor_on', methods = ['POST'])
 def sensor_on():
-    if is_video_stream_running():
+    if not is_video_stream_running():
         global sensor_pi
         sensor_pi = SensorPi(server_IP)
         sensor_pi.sensor_on()
