@@ -44,7 +44,7 @@ def limit_remote_addr():
     if request.remote_addr != client_ip:
          abort(403)
 
-@app.route('/')
+# @app.route('/')
 def gen(camera):
     """Video streaming generator function."""
     while True:

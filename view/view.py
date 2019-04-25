@@ -13,6 +13,9 @@ app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
  
 print(f"IP is correct : {controller.verify_IP(SERVER_IP)}")
+def limit_to_raspberry():
+   if request.remote_addr != SERVER_IP:
+      abort(403)
 
 @app.route('/',methods = ['POST'])
 def request_handler():
@@ -29,10 +32,12 @@ def request_reboot():
 
 @app.route('/photo', methods = ['POST'])
 def get_photo():
+   limit_to_raspberry()
    return controller.get_photo()
 
 @app.route('/motion_photo', methods = ['POST'])
 def get_motion_photo():
+   limit_to_raspberry()
    return controller.get_motion_photo()
 
 @app.route('/get_MAC', methods = ['POST'])
