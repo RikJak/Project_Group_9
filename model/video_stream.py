@@ -69,7 +69,6 @@ def shutdown_stream():
         email = request.args.get('email')
         api_key = request.args.get('api_key')
         valid = validate.validate_user(email,api_key)
-        valid = True # will be removed if real validation is made!
         if (valid):
             shutdown_server()
             return ':ok', 200
@@ -77,4 +76,4 @@ def shutdown_stream():
 
 if __name__ == '__main__':
     server_IP= sys.argv[3]
-    app.run(host=server_IP, port =PORT, debug=True, threaded=True)
+    app.run(host=server_IP, port =PORT, debug=False, threaded=True)

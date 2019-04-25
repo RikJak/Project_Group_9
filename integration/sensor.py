@@ -19,7 +19,11 @@ from sensor_pi import SensorPi
 
 #Variables
 number_of_args=len(sys.argv)
-server_IP= sys.argv[3]
+print(number_of_args)
+if  number_of_args >1:
+    server_IP= sys.argv[3]
+    PORT = sys.argv[2]
+    client_ip = sys.argv[1]
 
 #Setup of server
 app = Flask(__name__)
@@ -30,11 +34,6 @@ sensor_pi = None
 
 @app.before_request
 def limit_remote_addr():
-    if  number_of_args >1:
-        client_ip = sys.argv[1]
-        PORT = sys.argv[2]
-        
-
     if request.remote_addr != client_ip:
          abort(403)
 
@@ -51,5 +50,5 @@ def sensor_off():
 
 if __name__ == '__main__':
     global server_IP
-    app.run(host=server_IP, port =PORT, debug=True, threaded=True)
+    app.run(host=server_IP, port=PORT, debug=True, threaded=True)
     

@@ -19,10 +19,10 @@ class SensorPi():
     def initiate(self):
         if SensorPi.thread is None:
             # start background thread
-            SensorPi.thread = threading.Thread(target=self.sensor_thread)
+            SensorPi.thread = threading.Thread(target=self._sensor_thread)
             SensorPi.thread.start()
     
-    def sensor_thread(self):
+    def _sensor_thread(self):
         print("Sensor on")
         try:
 
