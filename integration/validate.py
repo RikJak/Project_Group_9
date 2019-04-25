@@ -4,7 +4,7 @@ import requests
 import json
 from config import Config
 config = Config()
-server_address = Config.get_webserver_IP()#'https://g9.apic.eu-gb.mybluemix.net/'
+server_address = config.get_webserver_IP() #'https://g9.apic.eu-gb.mybluemix.net/'
 class Validate:
 
 
