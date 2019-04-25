@@ -42,5 +42,5 @@ def sensor_off():
     return json.dumps({'msg':'Sensor turned off'})
 
 if __name__ == '__main__':
-    app.run(host=server_IP, port=PORT, debug=True, threaded=True)
+    app.run(host=server_IP, port=PORT, debug=False, threaded=True)
     
