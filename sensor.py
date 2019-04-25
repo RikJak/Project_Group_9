@@ -43,6 +43,7 @@ def sensor_on():
         sensor_pi = SensorPi(server_IP)
         sensor_pi.sensor_on()
         return json.dumps({'msg':'Sensor turned on'})
+    return json.dumps({'msg':'Sensor could not start because video stream is running'})
 
 @app.route('/sensor_off', methods = ['POST'])
 def sensor_off():
