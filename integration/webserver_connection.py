@@ -16,3 +16,4 @@ class WebserverConnection:
     def send_photo(self,filename):
         # files = {'media' : open(filename,'rb')}
         # r = requests.post(f"{self.webserver_address}/api/something", files = files) # url needs to be changed!
+        return True
