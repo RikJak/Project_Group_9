@@ -23,6 +23,8 @@ cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 #Sensor setup
 sensor_pi = None
+
+# Functions for checking is the video stream server is running
 def is_server_running(ip,port):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     result = sock.connect_ex((ip,port))
