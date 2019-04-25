@@ -5,6 +5,7 @@ from flask import Flask, render_template, Response, request, abort
 import os
 import sys
 import json
+import socket
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(f"{FILE_DIR}/integration")
 from sensor_pi import SensorPi
@@ -22,6 +23,13 @@ cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 #Sensor setup
 sensor_pi = None
+def is_server_running(ip,port):
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    result = sock.connect_ex((ip,port))
+    return result == 0
+
+def is_video_stream_running():
+    return is_server_running(server_IP,8000)
 
 @app.before_request
 def limit_remote_addr():
@@ -30,10 +38,11 @@ def limit_remote_addr():
 
 @app.route('/sensor_on', methods = ['POST'])
 def sensor_on():
-    global sensor_pi
-    sensor_pi = SensorPi(server_IP)
-    sensor_pi.sensor_on()
-    return json.dumps({'msg':'Sensor turned on'})
+    if is_video_stream_running():
+        global sensor_pi
+        sensor_pi = SensorPi(server_IP)
+        sensor_pi.sensor_on()
+        return json.dumps({'msg':'Sensor turned on'})
 
 @app.route('/sensor_off', methods = ['POST'])
 def sensor_off():
