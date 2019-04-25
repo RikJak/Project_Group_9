@@ -26,6 +26,9 @@ class Controller:
     def get_photo(self):
         return self.photo_handler.get_photo()
 
+    def get_motion_photo(self):
+        return self.photo_handler.get_motion_photo()
+
     def get_MAC_address(self):
         return self.device_info_handler.get_MAC_address()
 

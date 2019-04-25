@@ -31,6 +31,10 @@ def request_reboot():
 def get_photo():
    return controller.get_photo()
 
+@app.route('/motion_photo', methods = ['POST'])
+def get_motion_photo():
+   return controller.get_motion_photo()
+
 @app.route('/get_MAC', methods = ['POST'])
 def get_MAC():
    return json.dumps({'MAC_address': controller.get_MAC_address()})
