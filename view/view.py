@@ -4,7 +4,7 @@ FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(f"{FILE_DIR}/../controller")
 from flask_cors import CORS, cross_origin
 from contr import Controller
-from flask import Flask, redirect, url_for, request
+from flask import Flask, redirect, url_for, request, abort
 import json
 
 controller = Controller()

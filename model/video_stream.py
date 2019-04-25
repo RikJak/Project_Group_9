@@ -10,9 +10,10 @@ from flask_cors import CORS, cross_origin
 # Raspberry Pi camera module (requires picamera package)
 RES_X=640
 RES_Y=480
-PORT = 8000
 CAMERA = Camera(480,360)
 number_of_args=len(sys.argv)
+client_ip = sys.argv[1]
+PORT = sys.argv[2]
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
@@ -37,12 +38,8 @@ def shutdown_stream():
 
 # @app.before_request
 def limit_remote_addr():
-    if  number_of_args >1:
-        client_ip = sys.argv[1]
-        PORT = sys.argv[2]
-        
     if request.remote_addr != client_ip:
-         abort(403)
+        abort(403)
 
 # @app.route('/')
 def gen(camera):
