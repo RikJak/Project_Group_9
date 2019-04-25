@@ -29,7 +29,7 @@ class SensorPi():
             while self.sensor_running:
                 if GPIO.input(self.pir):
                     print(f"motion detected at: {datetime.datetime.now()}")
-                    request_address = f"http://{self.server_IP}:5000/photo"
+                    request_address = f"http://{self.server_IP}:5000/motion_photo"
                     r = requests.post(request_address,verify=False)
                     if(r.status_code == 200):
                         print("Photo taken!")
