@@ -16,7 +16,7 @@ class StreamHandler:
     def set_up_stream(self,email,api_key,client_ip,server_IP):
         valid = self.validate.validate_user(email,api_key)
         if (valid):
-            requests.post(f'{server_IP}:6000/sensor_off')
+            requests.post(f"{server_IP}:6000/sensor_off")
             # subprocess.call(['python3', '/home/Project_Group_9/model/video_stream.py', str(client_ip), str(PORT)])
             # call(f"python3 /home/Project_Group_9/model/video_stream.py {client_ip} {PORT}", shell=True)
             # run("/home/Project_Group_9/model/video_stream.py", client_ip, PORT)
