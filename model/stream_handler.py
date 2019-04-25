@@ -18,8 +18,8 @@ class StreamHandler:
         if (valid):
             try:
                 requests.post(f"http://{server_IP}:6000/sensor_off")
-            finally:
-                
+            except:
+                print("Sensor was not active")
             # subprocess.call(['python3', '/home/Project_Group_9/model/video_stream.py', str(client_ip), str(PORT)])
             # call(f"python3 /home/Project_Group_9/model/video_stream.py {client_ip} {PORT}", shell=True)
             # run("/home/Project_Group_9/model/video_stream.py", client_ip, PORT)
