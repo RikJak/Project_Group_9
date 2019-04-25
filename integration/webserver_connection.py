@@ -1,8 +1,12 @@
 import requests
 import json
+from config import Config
+
 class WebserverConnection:
-    def __init__(self,webserver_address):
-        self.webserver_address= webserver_address
+    def __init__(self):
+
+        config = Config()
+        self.webserver_address= config.get_webserver_IP
 
     def change_IP(self,server_IP,MAC):
         # content = {'server_IP':server_IP,'MAC_address':MAC}

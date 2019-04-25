@@ -18,4 +18,16 @@ class Config:
                 return json.loads(outputfile)
         return {}
                 
+    def get_webserver_address(self):
+        if self.file_exists():
+            with open(PATH) as outputfile:
+                return json.loads(outputfile)['webserver_ip']
+        return ''
+    
+    def get_local_address(self):
+        if self.file_exists():
+            with open(PATH) as outputfile:
+                return json.loads(outputfile)['local_ip']
+        return ''
+    
 
