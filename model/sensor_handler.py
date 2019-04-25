@@ -12,7 +12,7 @@ class SensorHandler():
     def start_sensor(self,email,api_key,client_ip,server_IP):
         valid = self.validate.validate_user(email,api_key)
         if (valid):
-            start_command = f"sudo python3 /home/Project_Group_9/model/video_stream.py {client_ip} {PORT} {server_IP} &"
+            start_command = f"sudo python3 /home/Project_Group_9/sensor.py {client_ip} {PORT} {server_IP} &"
             os.system(start_command)
             return json.dumps({'port':PORT, 'server_ip': server_IP})
         return '', 403

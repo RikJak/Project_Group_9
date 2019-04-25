@@ -1,6 +1,6 @@
-import RPi.GPIO as GPIO
-import time
-import datetime
+# import RPi.GPIO as GPIO
+# import time
+# import datetime
 import requests
 import threading
 from flask_cors import CORS, cross_origin
@@ -12,10 +12,10 @@ sys.path.append(f"{FILE_DIR}/integration")
 from sensor_pi import SensorPi
 
 #Setup of sensor
-GPIO.setmode(GPIO.BOARD)
-pir = 8
-GPIO.setup(pir,GPIO.IN)
-time.sleep(2)
+# GPIO.setmode(GPIO.BOARD)
+# pir = 8
+# GPIO.setup(pir,GPIO.IN)
+# time.sleep(2)
 
 #Variables
 number_of_args=len(sys.argv)
