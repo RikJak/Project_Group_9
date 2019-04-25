@@ -38,7 +38,7 @@ def limit_remote_addr():
     if request.remote_addr != client_ip:
          abort(403)
 
-@app.route('/sensor_on' methods = ['POST'])
+@app.route('/sensor_on', methods = ['POST'])
 def sensor_on():
     global sensor_pi
     sensor_pi = SensorPi(server_IP)
