@@ -10,7 +10,7 @@ from webserver_connection import WebserverConnection
 class PhotoHandler:
     def __init__(self):
         webserver_address= 'url'
-        self.webserver_connection = WebserverConnection(webserver_address)
+        self.webserver_connection = WebserverConnection()
 
     def take_photo(self):
         with picamera.PiCamera() as camera:
