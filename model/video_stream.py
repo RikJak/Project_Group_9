@@ -22,7 +22,20 @@ def shutdown_server():
         raise RuntimeError('Not running with the Werkzeug Server')
     func()
 
-@app.before_request
+
+@app.route('/shutdown_stream', methods = ['POST'])
+def shutdown_stream():
+    if request.method == 'POST':
+        validate = Validate()
+        email = request.args.get('email')
+        api_key = request.args.get('api_key')
+        valid = validate.validate_user(email,api_key)
+        if (valid):
+            shutdown_server()
+            return ':ok', 200
+        return '', 403
+
+# @app.before_request
 def limit_remote_addr():
     if  number_of_args >1:
         client_ip = sys.argv[1]
@@ -42,6 +55,7 @@ def gen(camera):
 
 @app.route('/video_feed')
 def video_feed(CAMERA=None):
+    limit_remote_addr()
     global RES_X
     global RES_Y    
     if CAMERA is None:
@@ -52,6 +66,7 @@ def video_feed(CAMERA=None):
 
 @app.route('/settings', methods = ['POST','GET'])
 def request_handler():
+    limit_remote_addr()
     if request.method == 'POST' or request.method == 'GET':
         global RES_X
         global RES_Y
@@ -62,17 +77,7 @@ def request_handler():
         video_feed(CAMERA)
         return json.dumps({'msg':'ok','res':resolution})
 
-@app.route('/shutdown_stream', methods = ['POST'])
-def shutdown_stream():
-    if request.method == 'POST':
-        validate = Validate()
-        email = request.args.get('email')
-        api_key = request.args.get('api_key')
-        valid = validate.validate_user(email,api_key)
-        if (valid):
-            shutdown_server()
-            return ':ok', 200
-        return '', 403
+
 
 if __name__ == '__main__':
     server_IP= sys.argv[3]
