@@ -20,6 +20,14 @@ class StreamHandler:
                 requests.post(f"http://{server_IP}:6000/sensor_off")
             except:
                 print("Sensor was not active")
+            try:
+                content = {'email':email,'api_key':api_key}
+                content = json.dumps(content)
+                headers = {"Content-Type":"application/json"}
+                requests.post(f"http://{server_IP}:8000/shutdown_stream", data = content,headers = headers,verify=False)
+            except:
+                print("Video stream was not active")
+
             # subprocess.call(['python3', '/home/Project_Group_9/model/video_stream.py', str(client_ip), str(PORT)])
             # call(f"python3 /home/Project_Group_9/model/video_stream.py {client_ip} {PORT}", shell=True)
             # run("/home/Project_Group_9/model/video_stream.py", client_ip, PORT)
