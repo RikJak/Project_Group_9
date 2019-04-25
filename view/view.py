@@ -49,7 +49,8 @@ def start_sensor():
    email = request.args.get('email')
    api_key = request.args.get('api_key')
    client_IP = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
-   return controller.start_sensor(email,api_key,client_IP)
+   print(SERVER_IP)
+   return controller.start_sensor(email,api_key,client_IP,SERVER_IP)
 
 if __name__ == '__main__':
    app.run(host = SERVER_IP, debug=False)
