@@ -5,7 +5,7 @@ import json
 from config import Config
 config = Config()
 server_address = config.get_webserver_IP() #'https://g9.apic.eu-gb.mybluemix.net/'
-class Validate:
+class Validate():
 
 
     def validate_user(self,email,api_key):
