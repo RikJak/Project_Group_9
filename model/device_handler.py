@@ -14,7 +14,7 @@ class DeviceHandler:
     def __init__(self):
         self.device = DeviceInfoHandler()
         self.file = Config()
-        self.webserver_connection = WebserverConnection('some url')
+        self.webserver_connection = WebserverConnection()
     
     def register_device(self,webserver_IP):
         local_IP = self.device.get_IP_address()
