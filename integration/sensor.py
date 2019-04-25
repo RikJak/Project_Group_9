@@ -26,7 +26,7 @@ app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 #Sensor setup
-SensorPi = SensorPi(server_IP)
+sensor_pi = None
 
 @app.before_request
 def limit_remote_addr():
@@ -39,11 +39,17 @@ def limit_remote_addr():
          abort(403)
 
 @app.route('/sensor_on' methods = ['POST'])
-def sensor_on(self):
-    
+def sensor_on():
+    global sensor_pi
+    sensor_pi = SensorPi(server_IP)
+    sensor_pi.sensor_on()
+
 @app.route('/sensor_off', methods = ['POST'])
-def sensor_off(self):
+def sensor_off():
+    global sensor_pi
+    sensor_pi.sensor_off()
 
 if __name__ == '__main__':
     global server_IP
     app.run(host=server_IP, port =PORT, debug=True, threaded=True)
+    
