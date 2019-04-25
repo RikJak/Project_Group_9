@@ -1,6 +1,7 @@
 # import RPi.GPIO as GPIO
 # import time
 # import datetime
+print('Start of sensor service')
 import requests
 import threading
 from flask_cors import CORS, cross_origin
