@@ -2,8 +2,14 @@ import RPi.GPIO as GPIO
 import time
 import datetime
 import requests
+import threading
 from flask_cors import CORS, cross_origin
 from flask import Flask, render_template, Response, request, abort
+import os
+import sys
+FILE_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(f"{FILE_DIR}/integration")
+from sensor_pi import SensorPi
 
 #Setup of sensor
 GPIO.setmode(GPIO.BOARD)
@@ -19,6 +25,9 @@ server_IP= sys.argv[3]
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
+#Sensor setup
+SensorPi = SensorPi(server_IP)
+
 @app.before_request
 def limit_remote_addr():
     if  number_of_args >1:
@@ -28,22 +37,12 @@ def limit_remote_addr():
 
     if request.remote_addr != client_ip:
          abort(403)
-@app.route('/sensor_on' methods = ['POST'])
-def start_sensor(self):
-    print("Sensor on")
-    try:
-        while True:
-            if GPIO.input(pir):
-                print(f"motion detected at: {datetime.datetime.now()}")
-                global server_IP
-                request_address = f"http://{server_IP}:5000/photo"
-                r = requests.post(request_address,verify=False)
-                if(r.status_code == 200):
-                    print("Photo taken!")
-                time.sleep(4)
 
-    finally:
-        GPIO.cleanup()
+@app.route('/sensor_on' methods = ['POST'])
+def sensor_on(self):
+    
+@app.route('/sensor_off', methods = ['POST'])
+def sensor_off(self):
 
 if __name__ == '__main__':
     global server_IP
