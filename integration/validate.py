@@ -16,7 +16,7 @@ class Validate():
         content = json.dumps(content)
         headers = {"Content-Type":"application/json"}
         r = requests.post(f'{server_address}/api/user/validate_user', data = content,headers = headers,verify=False)
-        msg = json.loads(r.json())
+        msg = r.json()
 
         if(msg['result']=='true'):
             return True
