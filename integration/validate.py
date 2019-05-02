@@ -16,7 +16,7 @@ class Validate():
         content = {'email':email,'api_key':api_key}
         content = json.dumps(content)
         headers = {"Content-Type":"application/json"}
-        r = requests.post(f'{server_address}/api/user/validate_user', data = content,headers = headers,verify=False)
+        r = requests.post(f'http://{server_address}/api/user/validate_user', data = content,headers = headers,verify=False)
 
         msg = json.loads(r.content)
         print(msg)
