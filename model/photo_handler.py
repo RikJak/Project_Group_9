@@ -20,10 +20,10 @@ class PhotoHandler:
         return filename
 
     def get_photo(self):
-        self.take_photo()
-        return json.dumps({'msg':'Picture taken'}), 200
+        res = self.take_photo()
+        return json.dumps({'msg':res}), 200
     
     def get_motion_photo(self):
         filename = self.take_photo()
-        self.webserver_connection.send_photo(filename)
-        return json.dumps({'msg':'Picture taken and sent'}), 200
+        res = self.webserver_connection.send_photo(filename)
+        return json.dumps({'msg':res}), 200
