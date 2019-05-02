@@ -16,11 +16,11 @@ class Validate():
         content = json.dumps(content)
         headers = {"Content-Type":"application/json"}
         r = requests.post(f'{server_address}/api/user/validate_user', data = content,headers = headers,verify=False)
-        #msg = r.content
+        msg = json.loads(r.json())
 
-        if(r.status_code == 200):
+        if(msg['result']=='true'):
             return True
 
 
-        return True #Change when it's working
+        return False #Change when it's working
     
