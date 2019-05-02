@@ -15,8 +15,8 @@ class WebserverConnection:
         #address will be given by the api
         r = requests.post(f"{self.websever_address}/api/camera/update_ip", data = content,headers = headers,verify=False)
         if(r.status_code == 200):
-        return True
-    
+            return True
+        return False
     def send_photo(self,filename):
         files = {'media' : open(filename,'rb')}
         r = requests.post(f"{self.webserver_address}//api/user/notify", files = files) # url needs to be changed!
