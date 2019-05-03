@@ -33,7 +33,7 @@ class SensorPi():
                     r = requests.post(request_address,verify=False)
                     if(r.status_code == 200):
                         print("Photo taken!")
-                    time.sleep(4)
+                    time.sleep(300)
 
         finally:
             GPIO.cleanup()
