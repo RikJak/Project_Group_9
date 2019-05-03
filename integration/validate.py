@@ -10,20 +10,20 @@ class Validate():
 
 
     def validate_user(self,email,api_key):
-        """This method contacts the cloud server to verify that the user is valid. If status code 200 is returned the user is valid, and the function returns true
-        @Rikard
-        """
-        content = {'email':email,'api_key':api_key}
-        content = json.dumps(content)
-        headers = {"Content-Type":"application/json"}
-        r = requests.post(f'http://{server_address}/api/user/validate_user', data = content,headers = headers,verify=False)
+        # """This method contacts the cloud server to verify that the user is valid. If status code 200 is returned the user is valid, and the function returns true
+        # @Rikard
+        # """
+        # content = {'email':email,'api_key':api_key}
+        # content = json.dumps(content)
+        # headers = {"Content-Type":"application/json"}
+        # r = requests.post(f'http://{server_address}/api/user/validate_user', data = content,headers = headers,verify=False)
 
-        msg = json.loads(r.content)
-        print(msg)
+        # msg = json.loads(r.content)
+        # print(msg)
 
-        if(msg['result']=='true'):
-            return True
+        # if(msg['result']=='true'):
+        #     return True
 
 
-        return False #Change when it's working
+        return True #Change when it's working
     
