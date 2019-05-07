@@ -8,7 +8,7 @@ import json
 from device_info_handler import DeviceInfoHandler
 from config import Config
 from webserver_connection import WebserverConnection
-HARDCODED_WEB_IP = 'http://g9.apic.eu-gb.mybluemix.net/'#Temporary fix
+HARDCODED_WEB_IP = 'g9.apic.eu-gb.mybluemix.net/'#Temporary fix
 
 
 class DeviceHandler:
