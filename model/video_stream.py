@@ -27,10 +27,11 @@ def shutdown_server():
 @app.route('/shutdown_stream', methods = ['POST'])
 def shutdown_stream():
     if request.method == 'POST':
-        validate = Validate()
-        email = request.args.get('email')
-        api_key = request.args.get('api_key')
-        valid = validate.validate_user(email,api_key)
+        valid = True
+        # validate = Validate()
+        # email = request.args.get('email')
+        # api_key = request.args.get('api_key')
+        # valid = validate.validate_user(email,api_key)
         if (valid):
             shutdown_server()
             return ':ok', 200

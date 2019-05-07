@@ -26,6 +26,8 @@ class StreamHandler:
                 content = json.dumps(content)
                 headers = {"Content-Type":"application/json"}
                 requests.post(f"http://{server_IP}:8000/shutdown_stream", data = content,headers = headers,verify=False)
+
+                time.sleep(2)
             except:
                 print("Video stream was not active")
 
