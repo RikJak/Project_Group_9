@@ -8,6 +8,7 @@ import json
 from device_info_handler import DeviceInfoHandler
 from config import Config
 from webserver_connection import WebserverConnection
+HARDCODED_WEB_IP = 'http://g9.apic.eu-gb.mybluemix.net/'#Temporary fix
 
 
 class DeviceHandler:
@@ -18,7 +19,7 @@ class DeviceHandler:
     
     def register_device(self,webserver_IP):
         local_IP = self.device.get_IP_address()
-        self.file.make_config({'local_IP': local_IP,'webserver_IP':webserver_IP})
+        self.file.make_config({'local_IP': local_IP,'webserver_IP':HARDCODED_WEB_IP})#Fix hardcode
         MAC = self.device.get_MAC_address()
         return json.dumps({'MAC_Address': MAC})
 
@@ -28,7 +29,7 @@ class DeviceHandler:
             print(f"local: {local_IP} server {server_IP}")
             MAC = self.device.get_MAC_address()
             web_IP = self.file.get_webserver_IP()
-            self.register_device(web_IP)
+            self.register_device(HARDCODED_WEB_IP)#Fix hardcode
             return self.webserver_connection.change_IP(server_IP,MAC)
         return True
 

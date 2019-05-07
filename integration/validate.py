@@ -2,7 +2,7 @@
 
 import requests
 import json
-from .config import Config
+from config import Config
 config = Config()
 server_address = config.get_webserver_IP() 
 #server_address = 'http://g9.apic.eu-gb.mybluemix.net/'
