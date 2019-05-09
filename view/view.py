@@ -19,8 +19,8 @@ def limit_to_raspberry():
 
 @app.route('/',methods = ['POST'])
 def request_handler():
-    email = request.args.get('email')
-    api_key = request.args.get('api_key')
+    email = request.form['email']
+    api_key = request.form['api_key']
     
     #TRACKING PRINTS PLZ REMOVE
     print(f"View got this api:{api_key}")
