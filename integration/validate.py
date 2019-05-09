@@ -13,6 +13,9 @@ class Validate():
         """This method contacts the cloud server to verify that the user is valid. If status code 200 is returned the user is valid, and the function returns true
         @Rikard
         """
+        print(api_key)
+        print(email)
+
         content = {'email':email,'api_key':api_key}
         content = json.dumps(content)
         headers = {"Content-Type":"application/json"}
