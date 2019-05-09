@@ -19,8 +19,9 @@ def limit_to_raspberry():
 
 @app.route('/',methods = ['POST'])
 def request_handler():
-    email = request.form['email']
-    api_key = request.form['api_key']
+    form = request.get_json(force=True) 
+    email = form['email']
+    api_key = form['api_key']
     
     #TRACKING PRINTS PLZ REMOVE
     print(f"View got this api:{api_key}")
@@ -31,8 +32,9 @@ def request_handler():
 
 @app.route('/reboot', methods = ['POST'])
 def request_reboot():
-   email = request.form['email']
-   api_key = request.form['api_key']
+    form = request.get_json(force=True) 
+    email = form['email']
+    api_key = form['api_key']
    return controller.reboot(email,api_key)
 
 @app.route('/photo', methods = ['POST'])
