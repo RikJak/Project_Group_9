@@ -35,7 +35,7 @@ def request_reboot():
     form = request.get_json(force=True) 
     email = form['email']
     api_key = form['api_key']
-   return controller.reboot(email,api_key)
+    return controller.reboot(email,api_key)
 
 @app.route('/photo', methods = ['POST'])
 def get_photo():
