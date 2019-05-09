@@ -19,10 +19,15 @@ def limit_to_raspberry():
 
 @app.route('/',methods = ['POST'])
 def request_handler():
-   email = request.args.get('email')
-   api_key = request.args.get('api_key')
-   client_IP = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
-   return controller.set_up_stream(email,api_key,client_IP,SERVER_IP)  
+    email = request.args.get('email')
+    api_key = request.args.get('api_key')
+    
+    #TRACKING PRINTS PLZ REMOVE
+    print(f"View got this api:{api_key}")
+    print(f"View got this email{email}")
+
+    client_IP = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+    return controller.set_up_stream(email,api_key,client_IP,SERVER_IP)  
 
 @app.route('/reboot', methods = ['POST'])
 def request_reboot():

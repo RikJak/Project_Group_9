@@ -18,6 +18,11 @@ class Controller:
         self.sensor_handler = SensorHandler()
         
     def set_up_stream(self,email,api_key,client_IP,server_IP):
+        """
+        Starts a stream server.
+        @input: api_key; client_IP; server_IP
+        @output: 
+        """
         return self.handler.set_up_stream(email,api_key,client_IP,server_IP)
 
     def reboot(self, email,api_key):
