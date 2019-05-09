@@ -19,17 +19,19 @@ def limit_to_raspberry():
 
 @app.route('/',methods = ['POST'])
 def request_handler():
-    form = request.get_json(force=True) 
-    email = form['email']
-    api_key = form['api_key']
+    try:
+        form = request.get_json(force=True) 
+        email = form['email']
+        api_key = form['api_key']
     
     #TRACKING PRINTS PLZ REMOVE
-    print(f"View got this api:{api_key}")
-    print(f"View got this email{email}")
+        print(f"View got this api:{api_key}")
+        print(f"View got this email{email}")
 
-    client_IP = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
-    return controller.set_up_stream(email,api_key,client_IP,SERVER_IP)  
-
+        client_IP = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+        return controller.set_up_stream(email,api_key,client_IP,SERVER_IP)  
+    finally:
+        abort(400)
 @app.route('/reboot', methods = ['POST'])
 def request_reboot():
     form = request.get_json(force=True) 
@@ -62,10 +64,11 @@ def register():
 
 @app.route('/start_sensor',methods = ['POST'])
 def start_sensor():
-   email = request.args.get('email')
-   api_key = request.args.get('api_key')
-   client_IP = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
-   return controller.start_sensor(email,api_key,client_IP,SERVER_IP)
+    form = request.get_json(force=True) 
+    email = form['email']
+    api_key = form['api_key']
+    client_IP = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
+    return controller.start_sensor(email,api_key,client_IP,SERVER_IP)
 
 if __name__ == '__main__':
    app.run(host = SERVER_IP, debug=False)

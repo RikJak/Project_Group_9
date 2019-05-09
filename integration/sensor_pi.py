@@ -17,12 +17,19 @@ class SensorPi():
         self.initiate()
 
     def initiate(self):
+        """
+        Starts a thread to run the sensor
+        """
         if SensorPi.thread is None:
             # start background thread
             SensorPi.thread = threading.Thread(target=self._sensor_thread)
             SensorPi.thread.start()
     
     def _sensor_thread(self):
+        """
+        Runs the sensor.
+        It reads from the GPIO, and if it detects movement(input is 1/True) it'll take a picture and send it to the main server.
+        """
         print("Sensor on")
         try:
 
@@ -39,8 +46,14 @@ class SensorPi():
             GPIO.cleanup()
     
     def sensor_off(self):
+        """
+        Stop reading the sensor
+        """
         self.sensor_running= False
     
     def sensor_on(self):
+        """
+        Enables the sensor and turns it on
+        """
         self.sensor_running = True
         self.initiate()

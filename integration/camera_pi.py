@@ -22,8 +22,12 @@ class Camera(object):
         RES_X = res_x
         RES_Y = res_y
     def get_res(self):
-        return RES_X
+        return f"{RES_X} x {RES_Y}"
     def changed_resolution(self):
+        """
+        Checks if the resolution has changed
+        @output: boolean
+        """
         if CUR_RES_X != RES_X or CUR_RES_Y != RES_Y:
             return True
         return False
@@ -39,6 +43,10 @@ class Camera(object):
                 time.sleep(0)
 
     def get_frame(self):
+        """
+        Captures the next fram and returns it
+        @output: frame
+        """
         Camera.last_access = time.time()
         self.initialize()
         return self.frame

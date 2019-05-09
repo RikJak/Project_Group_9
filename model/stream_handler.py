@@ -15,6 +15,13 @@ class StreamHandler:
         
 
     def set_up_stream(self,email,api_key,client_ip,server_IP):
+        """
+        Validates the user. If the user is valid it will turn any sensors and running streams off.
+        It will then start a new video_stream server from the commandline. 
+        It has a wait before it returns to make sure that the server is up before the user tries to access it.
+        @input: email,api_key,client_IP, device_IP
+        @output: {'port':PORT, 'server_ip': server_IP}
+        """
         valid = self.validate.validate_user(email,api_key)
         if (valid):
             try:
@@ -41,6 +48,11 @@ class StreamHandler:
         return '', 403
 
     def reboot(self,email,api_key):
+        """
+        Reboots the raspberryPi
+        @input: email,api_key
+        @output: error
+        """
         valid = self.validate.validate_user(email,api_key)
         valid = True # will be removed if real validation is made!
         if (valid):

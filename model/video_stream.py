@@ -28,10 +28,11 @@ def shutdown_server():
 def shutdown_stream():
     if request.method == 'POST':
         valid = True
+        # form = request.get_json(force=True) 
+        # email = form['email']
+        # api_key = form['api_key']
         # validate = Validate()
-        # email = request.args.get('email')
-        # api_key = request.args.get('api_key')
-        # valid = validate.validate_user(email,api_key)
+
         if (valid):
             shutdown_server()
             return ':ok', 200
@@ -68,8 +69,9 @@ def request_handler():
     if request.method == 'POST' or request.method == 'GET':
         global RES_X
         global RES_Y
-        RES_X = request.args.get('res_x')
-        RES_Y = request.args.get('res_y')
+        form = request.get_json(force=True) 
+        RES_X = form['res_x']
+        RES_Y = form['res_y']
         CAMERA = Camera(RES_X,RES_Y)
         resolution=(f"{RES_X}x{RES_Y}")
         video_feed(CAMERA)

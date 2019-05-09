@@ -9,6 +9,12 @@ class WebserverConnection:
         self.webserver_address= config.get_webserver_IP()
 
     def change_IP(self,server_IP,MAC):
+        """
+        Sends the current ip and MAC address in a JSON to the webserver.
+        If the server returns http code 200 True will be returned.
+        @input: device_IP, MAC
+        @output: boolean
+        """
         content = {'server_IP':server_IP,'MAC_address':MAC}
         content = json.dumps(content)
         headers = {"Content-Type":"application/json"}
@@ -18,6 +24,13 @@ class WebserverConnection:
             return True
         return False
     def send_photo(self,filename):
+        """
+        Sends a file to the webserver in a JSON.
+        Will return True if status code 200 is returned from the webserver.
+        @input: filname of the file to be sent
+        @output: boolean
+        """
+
         files = {'media' : open(filename,'rb')}
         r = requests.post(f"http://{self.webserver_address}/api/user/notify", files = files) # url needs to be changed!
         if(r.status_code == 200):

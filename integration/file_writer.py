@@ -2,6 +2,9 @@ from pathlib import Path
 import json
 PATH = '/home/pi/Desktop/ServerFiles/config.txt'
 class Config:
+    """
+    DEPRECATED DO NOT USE
+    """
     # def __init__(self):
 
     def file_exists(self):

@@ -10,8 +10,11 @@ class Validate():
 
 
     def validate_user(self,email,api_key):
-        """This method contacts the cloud server to verify that the user is valid. If status code 200 is returned the user is valid, and the function returns true
-        @Rikard
+        """
+        Takes the provided user details and sends them to the webserver for validation.
+        If the returned JSON contains 'true' the user will be considered valid
+        @input: email,api_key
+        @output: boolean
         """
         print(api_key)
         print(email)
