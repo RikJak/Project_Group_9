@@ -31,8 +31,8 @@ def request_handler():
 
 @app.route('/reboot', methods = ['POST'])
 def request_reboot():
-   email = request.args.get('email')
-   api_key = request.args.get('api_key')
+   email = request.form['email']
+   api_key = request.form['api_key']
    return controller.reboot(email,api_key)
 
 @app.route('/photo', methods = ['POST'])
