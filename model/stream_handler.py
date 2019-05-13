@@ -22,30 +22,33 @@ class StreamHandler:
         @input: email,api_key,client_IP, device_IP
         @output: {'port':PORT, 'server_ip': server_IP}
         """
-        valid = self.validate.validate_user(email,api_key)
-        if (valid):
-            try:
-                requests.post(f"http://{server_IP}:6000/sensor_off")
-            except:
-                print("Sensor was not active")
-            try:
-                content = {'email':email,'api_key':api_key}
-                content = json.dumps(content)
-                headers = {"Content-Type":"application/json"}
-                requests.post(f"http://{server_IP}:8000/shutdown_stream", data = content,headers = headers,verify=False)
+        try:
+            valid = self.validate.validate_user(email,api_key)
+            if (valid):
+                try:
+                    requests.post(f"http://{server_IP}:6000/sensor_off")
+                except:
+                    print("Sensor was not active")
+                try:
+                    content = {'email':email,'api_key':api_key}
+                    content = json.dumps(content)
+                    headers = {"Content-Type":"application/json"}
+                    requests.post(f"http://{server_IP}:8000/shutdown_stream", data = content,headers = headers,verify=False)
 
-                time.sleep(1)
-            except:
-                print("Video stream was not active")
+                    time.sleep(1)
+                except:
+                    print("Video stream was not active")
 
-            # subprocess.call(['python3', '/home/Project_Group_9/model/video_stream.py', str(client_ip), str(PORT)])
-            # call(f"python3 /home/Project_Group_9/model/video_stream.py {client_ip} {PORT}", shell=True)
-            # run("/home/Project_Group_9/model/video_stream.py", client_ip, PORT)
-            start_command = f"sudo python3 /home/Project_Group_9/model/video_stream.py {client_ip} {PORT} {server_IP} &"
-            os.system(start_command)
-            time.sleep(5)
-            return json.dumps({'port':PORT, 'server_ip': server_IP})
-        return '', 403
+                # subprocess.call(['python3', '/home/Project_Group_9/model/video_stream.py', str(client_ip), str(PORT)])
+                # call(f"python3 /home/Project_Group_9/model/video_stream.py {client_ip} {PORT}", shell=True)
+                # run("/home/Project_Group_9/model/video_stream.py", client_ip, PORT)
+                start_command = f"sudo python3 /home/Project_Group_9/model/video_stream.py {client_ip} {PORT} {server_IP} &"
+                os.system(start_command)
+                time.sleep(5)
+                return json.dumps({'port':PORT, 'server_ip': server_IP})
+            return '', 403
+        except:
+            return '', 500
 
     def reboot(self,email,api_key):
         """

@@ -26,7 +26,7 @@ def request_handler():
     
     #TRACKING PRINTS PLZ REMOVE
         print(f"View got this api:{api_key}")
-        print(f"View got this email{email}")
+        print(f"View got this email:{email}")
 
         client_IP = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
         return controller.set_up_stream(email,api_key,client_IP,SERVER_IP)  

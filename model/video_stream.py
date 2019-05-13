@@ -10,7 +10,7 @@ from flask_cors import CORS, cross_origin
 # Raspberry Pi camera module (requires picamera package)
 RES_X=640
 RES_Y=480
-CAMERA = Camera(640,480)
+CAMERA = Camera(RES_X,RES_Y)
 number_of_args=len(sys.argv)
 client_ip = sys.argv[1]
 PORT = sys.argv[2]
