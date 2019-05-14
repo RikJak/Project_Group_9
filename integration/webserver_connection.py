@@ -1,11 +1,11 @@
 import requests
 import json
-from config import Config
+import configFile
 
 class WebserverConnection:
     def __init__(self):
 
-        config = Config()
+        config = configFile.Config()
         self.webserver_address= config.get_webserver_IP()
 
     def change_IP(self,server_IP,MAC):
