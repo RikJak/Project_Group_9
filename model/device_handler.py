@@ -6,7 +6,7 @@ sys.path.append(f"{FILE_DIR}/../integration")
 #from device import Device
 import json
 from device_info_handler import DeviceInfoHandler
-from config import Config
+import configFile
 from webserver_connection import WebserverConnection
 HARDCODED_WEB_IP = 'g9.apic.eu-gb.mybluemix.net/'#Temporary fix
 
@@ -14,7 +14,7 @@ HARDCODED_WEB_IP = 'g9.apic.eu-gb.mybluemix.net/'#Temporary fix
 class DeviceHandler:
     def __init__(self):
         self.device = DeviceInfoHandler()
-        self.file = Config()
+        self.file = configFile.Config()
         self.webserver_connection = WebserverConnection()
     
     def register_device(self,webserver_IP):
