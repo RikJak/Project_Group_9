@@ -32,7 +32,7 @@ class WebserverConnection:
         """
 
         files = {'media' : open(filename,'rb')}
-        r = requests.post(f"http://{self.webserver_address}/api/user/notify", files = files) # url needs to be changed!
+        r = requests.post(f"http://{self.webserver_address}/api/user/notify", files = files) 
         if(r.status_code == 200):
             return True
         return False

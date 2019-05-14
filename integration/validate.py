@@ -6,7 +6,7 @@ import os,sys
 
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(f"{FILE_DIR}/../")
-import configFile
+from . import configFile
 config = configFile.Config()
 server_address = config.get_webserver_IP() 
 #server_address = 'http://g9.apic.eu-gb.mybluemix.net/'
