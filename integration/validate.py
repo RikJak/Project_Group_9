@@ -37,5 +37,5 @@ class Validate():
                 return True
 
         print(r.content)
-        return False #Change when it's working
+        return False
     

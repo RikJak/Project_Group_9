@@ -33,7 +33,7 @@ class WebserverConnection:
         """
         device = Device()
         mac = device.get_MAC_address()
-        files = {'media' : open(filename,'rb'),'MAC_address':mac}
+        files = {"media" : open(filename,'rb'),"MAC_address":mac}
         r = requests.post(f"http://{self.webserver_address}/api/user/notify", files = files) 
         msg = r.text
         print(msg)
