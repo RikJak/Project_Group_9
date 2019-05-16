@@ -38,7 +38,7 @@ class WebserverConnection:
         files = {"media" : open(filename,'rb')}
         content = json.dumps({'MAC_address':mac})
         print(mac)
-        r = requests.post(f"http://{self.webserver_address}/api/user/notify", data = content)#, files = files) 
+        r = requests.post(f"http://{self.webserver_address}api/user/notify", data = content)#, files = files) 
         msg = r.text
         print(msg)
         if(r.status_code == 200):
