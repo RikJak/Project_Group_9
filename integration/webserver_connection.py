@@ -1,6 +1,7 @@
 import requests
 import json
 import configFile
+from device import Device
 
 class WebserverConnection:
     def __init__(self):
@@ -30,8 +31,9 @@ class WebserverConnection:
         @input: filname of the file to be sent
         @output: boolean
         """
-
-        files = {'media' : open(filename,'rb')}
+        device = Device()
+        mac = device.get_MAC_address()
+        files = {'media' : open(filename,'rb'),'MAC_address':mac}
         r = requests.post(f"http://{self.webserver_address}/api/user/notify", files = files) 
         if(r.status_code == 200):
             return True
