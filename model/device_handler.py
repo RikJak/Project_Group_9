@@ -26,7 +26,7 @@ class DeviceHandler:
         local_IP = self.device.get_IP_address()
         self.file.make_config({'local_IP': local_IP,'webserver_IP':HARDCODED_WEB_IP})#Fix hardcode
         MAC = self.device.get_MAC_address()
-        return json.dumps({'MAC_Address': MAC})
+        return json.dumps({'MAC_address': MAC})
 
     def verify_IP(self, server_IP):
         """
