@@ -20,7 +20,8 @@ class PhotoHandler:
         with picamera.PiCamera() as camera:
             name = datetime.datetime.now()
             filename = f"/home/pi/Desktop/ServerFiles/Pictures/{name}.jpeg"
-            camera.capture(filename,rotation=180)
+            camera.PiCamera(rotation=180,resolution=(1920,1080))  
+            camera.capture(filename)
         return filename
 
     def get_photo(self):
