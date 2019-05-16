@@ -30,12 +30,12 @@ class Validate():
 
 
 
-        # if(r.status_code == 200):
-        msg = json.loads(r.content)
-        print(msg)
-        if(msg['result']=='true'):
-            return True
+        if(r.status_code == 200):
+            msg = json.loads(r.content)
+            print(msg)
+            if(msg['result']=='true'):
+                return True
 
-
+        print(r.content)
         return False #Change when it's working
     
