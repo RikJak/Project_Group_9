@@ -10,7 +10,7 @@ import json
 controller = Controller()
 SERVER_IP = controller.get_IP_address()
 app = Flask(__name__)
-#cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
+cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
  
 print(f"IP is correct : {controller.verify_IP(SERVER_IP)}")
 def limit_to_raspberry():
