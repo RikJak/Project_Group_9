@@ -35,9 +35,9 @@ class WebserverConnection:
         device = Device()
         mc = device.get_MAC_address()
         mac= f"{mc}"
-        files = {"MAC_address":mac,"media" : open(filename,'rb')}
+        files = {"media" : open(filename,'rb')}
         print(mac)
-        r = requests.post(f"http://{self.webserver_address}/api/user/notify", json.dumps({"MAC_address":mac}))# files = files) 
+        r = requests.post(f"http://{self.webserver_address}/api/user/notify", data = {"MAC_address":mac}, files = files) 
         msg = r.text
         print(msg)
         if(r.status_code == 200):
