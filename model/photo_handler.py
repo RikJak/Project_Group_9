@@ -17,10 +17,9 @@ class PhotoHandler:
         Takes a photo and saves it to a file using the time as a name.
         @return: name of file containing photo
         """
-        with picamera.PiCamera() as camera:
+        with picamera.PiCamera(rotation=180,resolution=(1920,1080)) as camera:
             name = datetime.datetime.now()
             filename = f"/home/pi/Desktop/ServerFiles/Pictures/{name}.jpeg"
-            camera.camera.PiCamera(rotation=180,resolution=(1920,1080))  
             camera.capture(filename)
         return filename
 
