@@ -38,6 +38,7 @@ class SensorPi():
                     print(f"motion detected at: {datetime.datetime.now()}")
                     request_address = f"http://{self.server_IP}:5000/motion_photo"
                     r = requests.post(request_address,verify=False)
+                    print(r)
                     if(r.status_code == 200):
                         print("Photo taken!")
                     time.sleep(300)
