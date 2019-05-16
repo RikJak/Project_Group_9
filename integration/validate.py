@@ -20,8 +20,6 @@ class Validate():
         @input: email,api_key
         @output: boolean
         """
-        print(api_key)
-        print(email)
 
         content = {'email':email,'api_key':api_key}
         content = json.dumps(content)
@@ -29,7 +27,6 @@ class Validate():
         r = requests.post(f'http://{server_address}/api/user/validate_user', data = content,headers = headers,verify=False)
 
         msg = json.loads(r.content)
-        print(msg)
 
         if(msg['result']=='true'):
             return True
