@@ -18,7 +18,6 @@ class WebserverConnection:
         content = {'server_IP':server_IP,'MAC_address':MAC}
         content = json.dumps(content)
         headers = {"Content-Type":"application/json"}
-        #address will be given by the api
         r = requests.post(f"http://{self.webserver_address}/api/camera/update_ip", data = content,headers = headers,verify=False)
         if(r.status_code == 200):
             return True

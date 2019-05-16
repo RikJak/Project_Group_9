@@ -12,7 +12,6 @@ SERVER_IP = controller.get_IP_address()
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
  
-print(f"IP is correct : {controller.verify_IP(SERVER_IP)}")
 def limit_to_raspberry():
    if request.remote_addr != SERVER_IP:
       abort(403)
@@ -23,10 +22,6 @@ def request_handler():
         form = request.get_json(force=True) 
         email = form['email']
         api_key = form['api_key']
-    
-    #TRACKING PRINTS PLZ REMOVE
-        print(f"View got this api:{api_key}")
-        print(f"View got this email:{email}")
 
         client_IP = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
         return controller.set_up_stream(email,api_key,client_IP,SERVER_IP)  

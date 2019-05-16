@@ -9,18 +9,15 @@ FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(f"{FILE_DIR}/integration")
 from sensor_pi import SensorPi
 
-#Variables
 number_of_args=len(sys.argv)
 if  number_of_args >1:
     server_IP= sys.argv[3]
     PORT = sys.argv[2]
     client_ip = sys.argv[1]
 
-#Setup of server
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
-#Sensor setup
 sensor_pi = None
 
 @app.before_request

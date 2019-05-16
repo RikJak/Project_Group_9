@@ -21,7 +21,6 @@ class SensorPi():
         Starts a thread to run the sensor
         """
         if SensorPi.thread is None:
-            # start background thread
             SensorPi.thread = threading.Thread(target=self._sensor_thread)
             SensorPi.thread.start()
     

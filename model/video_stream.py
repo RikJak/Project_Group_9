@@ -7,7 +7,6 @@ from camera_pi import Camera
 import json
 from validate import Validate
 from flask_cors import CORS, cross_origin
-# Raspberry Pi camera module (requires picamera package)
 RES_X=640
 RES_Y=480
 CAMERA = Camera(RES_X,RES_Y)
@@ -27,23 +26,13 @@ def shutdown_server():
 @app.route('/shutdown_stream', methods = ['POST'])
 def shutdown_stream():
     if request.method == 'POST':
-        valid = True
-        # form = request.get_json(force=True) 
-        # email = form['email']
-        # api_key = form['api_key']
-        # validate = Validate()
+        shutdown_server()
+        return ':ok', 200
 
-        if (valid):
-            shutdown_server()
-            return ':ok', 200
-        return '', 403
-
-# @app.before_request
 def limit_remote_addr():
     if request.remote_addr != client_ip:
         abort(403)
 
-# @app.route('/')
 def gen(camera):
     """Video streaming generator function."""
     while True:
@@ -59,7 +48,6 @@ def video_feed(CAMERA=None):
     global RES_Y    
     if CAMERA is None:
         CAMERA = Camera(RES_X,RES_Y)
-    print(f"The resolution is {CAMERA.get_res()}")
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(gen(CAMERA), mimetype='multipart/x-mixed-replace; boundary=frame')
 

@@ -5,7 +5,6 @@ class Config:
     """
     DEPRECATED DO NOT USE
     """
-    # def __init__(self):
 
     def file_exists(self):
         config =Path(PATH)

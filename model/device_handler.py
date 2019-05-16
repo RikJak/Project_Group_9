@@ -2,13 +2,11 @@ import os
 import sys
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(f"{FILE_DIR}/../integration")
-
-#from device import Device
 import json
 from device_info_handler import DeviceInfoHandler
 import configFile
 from webserver_connection import WebserverConnection
-HARDCODED_WEB_IP = 'g9.apic.eu-gb.mybluemix.net/'#Temporary fix
+HARDCODED_WEB_IP = 'g9.apic.eu-gb.mybluemix.net/'
 
 
 class DeviceHandler:
@@ -40,7 +38,7 @@ class DeviceHandler:
             print(f"local: {local_IP} server {server_IP}")
             MAC = self.device.get_MAC_address()
             web_IP = self.file.get_webserver_IP()
-            self.register_device(HARDCODED_WEB_IP)#Fix hardcode
+            self.register_device(HARDCODED_WEB_IP)
             return self.webserver_connection.change_IP(server_IP,MAC)
         return True
 
