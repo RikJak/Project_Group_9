@@ -3,6 +3,7 @@ import time
 import datetime
 import requests
 import threading
+SLEEP_TIME = 10
 
 class SensorPi():
     thread = None
@@ -41,7 +42,7 @@ class SensorPi():
                     print(r)
                     if(r.status_code == 200):
                         print("Photo taken!")
-                    time.sleep(300)
+                    time.sleep(SLEEP_TIME)
 
         finally:
             GPIO.cleanup()
